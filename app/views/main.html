@@ -1,0 +1,47 @@
+<div ng-controller="NewsCtrl as vm">
+  <div ng-show="vm.loading">
+    <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+  </div>
+  <md-card ng-repeat="post in vm.news" ng-show="vm.news.length">
+    <md-card-header>
+      <md-card-avatar>
+        <img ng-src="{{ post.item.actor.image.url }}" alt="GDG" title="GDG" />
+      </md-card-avatar>
+      <md-card-header-text>
+        <span class="md-title">{{ post.item.actor.displayName }}</span>
+        <span class="md-subhead">{{ post.published | date:'EEEE, MMMM d, y' }}</span>
+      </md-card-header-text>
+    </md-card-header>
+
+    <img ng-if="post.object.attachments[0].objectType === 'photo'" 
+        ng-src="{{ post.object.attachments[0].image.url }}" 
+        class="md-card-image" style="height: 50%;"
+        alt="{{ post.object.attachments[0].displayName }}"
+        title="{{ post.object.attachments[0].displayName }}">
+
+    <img ng-if="post.object.attachments[0].objectType === 'article'" 
+        ng-src="{{ post.object.attachments[0].image.url }}" 
+        class="md-card-image" style="height: 50%;"
+        alt="{{ post.object.attachments[0].displayName }}"
+        title="{{ post.object.attachments[0].displayName }}">
+
+    <img ng-if="post.object.attachments[0].objectType === 'album'" 
+        ng-src="{{ post.object.attachments[0].thumbnails[0].image.url }}" 
+        class="md-card-image" style="height: 50%;"
+        alt="{{ post.object.attachments[0].displayName }}"
+        title="{{ post.object.attachments[0].displayName }}">
+
+    <md-card-content>
+      <div class="content-desc" ng-bind-html="post.object.content | htmlLinky | hashLinky"></div>
+    </md-card-content>
+
+    <md-card-actions layout="row" layout-align="start center">
+      <span flex>
+        <md-button ng-disabled="true">{{ post.comments }} Comment<span ng-show="post.comments != 1">s</span></md-button>
+        <md-button ng-disabled="true">{{ post.reshares }} share<span ng-show="post.reshares != 1">s</span></md-button>
+        <div class="g-plusone" style="padding: 10px;" data-size="medium" data-annotation="bubble" data-href="{{ post.item.url }}"></div>
+      </span>
+      <md-button ng-href="{{ post.item.url }}" target="_blank" class="md-accent">Read More</md-button>
+    </md-card-actions>
+  </md-card>
+</div>

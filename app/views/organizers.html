@@ -1,0 +1,23 @@
+<md-card>
+  <md-toolbar flex>
+    <h2 class="md-toolbar-tools">Organizers</h2>
+  </md-toolbar>
+  <md-card-content>
+    <div ng-show="vm.loading">
+      <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+    </div>
+    <div ng-hide="vm.loading" ng-repeat="person in vm.organizers">
+      <div class="organizer-grid">
+        <div class="g-person"
+            data-width="220"
+            data-href="{{ person.link }}"
+            data-showtagline="false"
+            data-showcoverphoto="false"
+            data-rel="author"></div>
+      </div>
+    </div>
+    <div ng-hide="vm.loading" ng-if="vm.error">
+      <span ng-bind="vm.error"></span>
+    </div>
+  </md-card-content>
+</md-card>

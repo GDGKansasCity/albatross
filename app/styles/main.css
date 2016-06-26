@@ -1,0 +1,93 @@
+@charset "UTF-8";
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important;
+}
+
+.browsehappy {
+  margin: 0.2em 0;
+  background: #ccc;
+  color: #000;
+  padding: 0.2em 0;
+}
+
+.login-button {
+  position: absolute;
+  margin: auto;
+  top: 0;
+  right: 500px;
+  bottom: 0;
+  left: 0;
+  width: 100px;
+  height: 100px;
+}
+
+.socialIcon {
+  color: #fff;
+  margin: 12px 10px 8px 10px;
+}
+
+.png-icon {
+  background-repeat: no-repeat no-repeat;
+  display: inline-block;
+  vertical-align: top;
+  height: 20px;
+  width: 20px;
+  font-size: 1.33333333em;
+  line-height: .75em;
+  margin: 2px 9px 9px 9px;
+}
+
+.invert {
+  -webkit-filter: invert(100%);
+}
+
+body {
+  padding: 0;
+}
+
+.content-desc a:link,
+.content-desc a:hover,
+.content-desc a:visited,
+.content-desc a:focus,
+.content-desc a:active {
+  color: #2196F3;
+  text-decoration: none;
+
+  /* These are technically the same, but use both */
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+
+  -ms-word-break: break-all;
+  /* This is the dangerous one in WebKit, as it breaks things wherever */
+  word-break: break-all;
+  /* Instead use this non-standard one: */
+  word-break: break-word;
+
+  /* Adds a hyphen where the word breaks, if supported (No Blink) */
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+}
+
+.organizer-grid {
+  padding: 25px 50px;
+  float: left;
+}
+
+/* Responsive: Portrait tablets */
+@media (min-width: 640px) and (max-width: 768px) {
+  .organizer-grid {
+    padding: 25px 60px;
+    float: left;
+  }
+}
+
+/* Responsive: Portrait phone */
+@media screen and (max-width: 640px) {
+  .organizer-grid {
+    padding: 25px 40px;
+    float: left;
+  }
+}

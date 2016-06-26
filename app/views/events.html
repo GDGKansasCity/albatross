@@ -1,0 +1,97 @@
+<md-card>
+  <md-toolbar flex>
+    <h2 class="md-toolbar-tools">Upcoming</h2>
+  </md-toolbar>
+  <md-card-content class="md-padding" layout="row">
+    <div ng-show="vm.loading">
+      <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+    </div>
+    <div flex layout="column">
+      <md-card ng-repeat="event in vm.events.future" ng-show="vm.events.future.length">
+        <md-card-header>
+          <md-card-avatar>
+            <img src="https://developers.google.com/_static/images/gdg-icon.png" alt="GDG Boomerang" />
+          </md-card-avatar>
+          <md-card-header-text>
+            <span class="md-title">{{ event.title }}</span>
+            <span class="md-subhead">{{ event.start | date:'EEEE, MMMM d, y - h:mm a' }}</span>
+          </md-card-header-text>
+        </md-card-header>
+
+        <md-card-content>
+          <div class="content-desc" ng-bind-html="event.about | htmlLinky | hashLinky"></div>
+          <div layout="row" layout-padding layout-wrap>
+            <span class="content-desc" ng-repeat="tag in event.tags">
+              &nbsp;<a ng-href="https://plus.google.com/s/%23{{ tag }}" target="_blank">#{{ tag }}</a>&nbsp;
+            </span>
+          </div>
+        </md-card-content>
+
+        <md-card-actions layout="row" layout-align="end center">
+          <md-button ng-if="event.locationUrl" class="md-icon-button" ng-click="vm.navigateTo(event.locationUrl)" aria-label="Get Directions">
+            <md-tooltip md-direction="bottom">
+              Get Directions
+            </md-tooltip>
+            <md-icon class="material-icons">map</md-icon>
+          </md-button>
+          <md-button ng-if="event.eventUrl" class="md-icon-button" ng-click="vm.navigateTo(event.eventUrl)" aria-label="View Event">
+            <md-tooltip md-direction="bottom">
+              View Event
+            </md-tooltip>
+            <md-icon class="material-icons">event</md-icon>
+          </md-button>
+        </md-card-actions>
+      </md-card>
+      <h4 ng-if="vm.upcomingError" ng-bind-html="vm.upcomingError" style="margin: 8px"></h4>
+    </div>
+  </md-card-content>
+</md-card>
+
+<md-card>
+  <md-toolbar flex>
+    <h2 class="md-toolbar-tools">Recent Meetups</h2>
+  </md-toolbar>
+  <md-card-content class="md-padding" layout="row">
+    <div ng-show="vm.loading">
+      <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+    </div>
+    <div flex layout="column">
+      <md-card ng-repeat="event in vm.events.past" ng-show="vm.events.past.length">
+        <md-card-header>
+          <md-card-avatar>
+            <img src="https://developers.google.com/_static/images/gdg-icon.png" alt="GDG Boomerang" />
+          </md-card-avatar>
+          <md-card-header-text>
+            <span class="md-title">{{ event.title }}</span>
+            <span class="md-subhead">{{ event.start | date:'EEEE, MMMM d, y - h:mm a' }}</span>
+          </md-card-header-text>
+        </md-card-header>
+
+        <md-card-content>
+          <div class="content-desc" ng-bind-html="event.about | htmlLinky | hashLinky"></div>
+          <div layout="row" layout-padding layout-wrap>
+            <span class="content-desc" ng-repeat="tag in event.tags">
+              &nbsp;<a ng-href="https://plus.google.com/s/%23{{ tag }}" target="_blank">#{{ tag }}</a>&nbsp;
+            </span>
+          </div>
+        </md-card-content>
+
+        <md-card-actions layout="row" layout-align="end center">
+          <md-button ng-if="event.locationUrl" class="md-icon-button" ng-click="vm.navigateTo(event.locationUrl)" aria-label="Get Directions">
+            <md-tooltip md-direction="bottom">
+              Get Directions
+            </md-tooltip>
+            <md-icon class="material-icons">map</md-icon>
+          </md-button>
+          <md-button ng-if="event.eventUrl" class="md-icon-button" ng-click="vm.navigateTo(event.eventUrl)" aria-label="View Event">
+            <md-tooltip md-direction="bottom">
+              View Event
+            </md-tooltip>
+            <md-icon class="material-icons">event</md-icon>
+          </md-button>
+        </md-card-actions>
+      </md-card>
+      <h4 ng-if="vm.upcomingError" ng-bind-html="vm.pastError" style="margin: 8px"></h4>
+    </div>
+  </md-card-content>
+</md-card>

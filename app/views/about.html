@@ -1,0 +1,33 @@
+<md-card>
+  <md-toolbar flex>
+    <h2 class="md-toolbar-tools">About</h2>
+  </md-toolbar>
+  <md-card-content>
+    <div ng-show="about.loading">
+      <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+    </div>
+    <div ng-hide="about.loading" class="content-desc" ng-bind-html="about.desc | htmlLinky | hashLinky"></div>
+  </md-card-content>
+</md-card>
+
+<md-card>
+  <md-toolbar flex>
+    <h2 class="md-toolbar-tools">Albatross Project</h2>
+  </md-toolbar>
+  <md-card-content>
+    <div class="content-desc">
+      <p>&copy; 2016 - Albatross Project</p>
+      <p>
+        A boilerplate <a href="https://developers.google.com/web/progressive-web-apps/" target="_blank">Progressive Web App (PWA)</a> 
+        that utilizes <a href="https://developers.google.com/+/web/api/rest/" target="_blank">Google+</a> & 
+        <a href="http://www.meetup.com/meetup_api/" target="_blank">Meetup.com</a> APIs, built using 
+        <a href="https://angularjs.org/" target="_blank">AngularJS</a>, <a href="https://material.angularjs.org" target="_blank">Angular Material</a>, 
+        and running on a <a href="https://firebase.google.com" target="_blank">Firebase</a> backend.
+      </p>
+      <p>
+        It is themed for use by GDG Kansas City. Originally designed by 
+        <a href="https://plus.google.com/+KylePaul" target="_blank">Kyle Paul</a>.
+      </p>
+    </div>
+  </md-card-content>
+</md-card>

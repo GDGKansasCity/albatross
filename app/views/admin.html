@@ -1,0 +1,154 @@
+<section ng-hide-auth ng-cloak>
+  <div class="login-button">
+    <md-button ng-click="admin.login()">
+      <md-icon class="material-icons">account_circle</md-icon>
+      <span>Sign in with Google</span>
+    </md-button>
+  </div>
+</section>
+
+<selection ng-show-auth ng-cloak>
+  <md-tabs md-dynamic-height md-border-bottom>
+    <!-- Cover Jumbotron -->
+    <md-tab label="Cover">
+      <md-content class="md-hue-2 md-padding" layout="row">
+        <div flex>
+          <md-card>
+            <md-toolbar flex>
+              <h2 class="md-toolbar-tools">Cover Banner</h2>
+            </md-toolbar>
+            <md-card-content>
+              <form layout="column">
+                <md-input-container>
+                  <label>Title</label>
+                  <input ng-model="admin.cover.title"/>
+                </md-input-container>
+                <md-input-container>
+                  <label>Subtitle</label>
+                  <input ng-model="admin.cover.subtitle"/>
+                </md-input-container>
+                <md-input-container>
+                  <label>Action Button Text</label>
+                  <input ng-model="admin.cover.actionButton"/>
+                </md-input-container>
+                <md-input-container>
+                  <input type="file" ng-model="admin.cover.image" accept="image/x-png" aria-label="Select a File" />
+                </md-input-container>
+              </form>
+            </md-card-content>
+            <md-card-actions layout="row" layout-align="end center">
+              <md-button ng-click="admin.saveCover()">Save</md-button>
+            </md-card-actions>
+          </md-card>
+        </div>
+      </md-content>
+    </md-tab>
+    <!-- Social Settings -->
+    <md-tab label="Social">
+      <md-content class="md-hue-2 md-padding" layout="row">
+        <div flex>
+          <md-card>
+            <md-toolbar flex>
+              <h2 class="md-toolbar-tools">Social Handles</h2>
+            </md-toolbar>
+            <md-card-content>
+              <form layout="column">
+                <md-input-container>
+                  <label>YouTube</label>
+                  <input ng-model="admin.social.youtube"/>
+                </md-input-container>
+                <md-input-container>
+                  <label>Twitter</label>
+                  <input ng-model="admin.social.twitter"/>
+                </md-input-container>
+                <md-input-container>
+                  <label>Facebook</label>
+                  <input ng-model="admin.social.facebook"/>
+                </md-input-container>
+                <md-input-container>
+                  <label>GitHub</label>
+                  <input ng-model="admin.social.github"/>
+                </md-input-container>
+                <md-input-container>
+                  <label>Meetup</label>
+                  <input ng-model="admin.social.meetup"/>
+                </md-input-container>
+              </form>
+            </md-card-content>
+            <md-card-actions layout="row" layout-align="end center">
+              <md-button ng-click="admin.saveSocial()">Save</md-button>
+            </md-card-actions>
+          </md-card>
+        </div>
+      </md-content>
+    </md-tab>
+    <!-- Main Config -->
+    <md-tab label="Config">
+      <md-content class="md-hue-2 md-padding" layout="row">
+        <div flex>
+          <md-card>
+            <md-toolbar flex>
+              <h2 class="md-toolbar-tools">Config</h2>
+            </md-toolbar>
+            <md-card-content>
+              <form layout="column">
+                <md-input-container>
+                  <label>Chapter Name</label>
+                  <input ng-model="admin.config.chapterName"/>
+                </md-input-container>
+                <md-input-container>
+                  <label>Chapter Website</label>
+                  <input ng-model="admin.config.chapterWebsite"/>
+                </md-input-container>
+                <md-input-container>
+                  <label>Google+ Chapter ID</label>
+                  <input ng-model="admin.config.googleID"/>
+                </md-input-container>
+                <md-input-container>
+                  <label>Google API Key</label>
+                  <input ng-model="admin.config.googleKey"/>
+                </md-input-container>
+                <md-input-container>
+                  <label>Meetup.com API Key</label>
+                  <input ng-model="admin.config.meetupKey"/>
+                </md-input-container>
+              </form>
+            </md-card-content>
+            <md-card-actions layout="row" layout-align="end center">
+              <md-button ng-click="admin.saveConfig()">Save</md-button>
+            </md-card-actions>
+          </md-card>
+        </div>
+      </md-content>
+    </md-tab>
+    <!-- Website Admins -->
+    <md-tab label="Admins">
+      <md-content class="md-hue-2 md-padding" layout="row">
+        <div flex>
+          <md-card>
+            <md-toolbar flex>
+              <h2 class="md-toolbar-tools">Allowed Admins</h2>
+              <md-button class="md-fab md-fab-top-right" aria-label="Add Admin" ng-click="admin.addAdmin($event)">
+                <md-tooltip md-direction="left">
+                  Add Admin
+                </md-tooltip>
+                <md-icon class="material-icons">add</md-icon>
+              </md-button>
+            </md-toolbar>
+            <md-card-content>
+              <md-list ng-if="admin.admins.length">
+                <md-list-item ng-repeat="email in admin.admins">
+                  <p>{{ email.$value }}</p>
+                  <md-button class="" ng-click="admin.removeAdmin($event, email)">
+                    <md-icon class="material-icons">delete</md-icon>
+                  </md-button>
+                </md-list-item>
+              </md-list>
+              <h4 ng-if="!admin.admins.length">Please add at least one admin.</h4>
+            </md-card-content>
+          </md-card>
+        </div>
+      </md-content>
+    </md-tab>
+  </md-tabs>
+</selection>
