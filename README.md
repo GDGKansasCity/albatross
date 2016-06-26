@@ -1,12 +1,5 @@
-# albatross
+# Albatross Project
 
-This project is generated with [yo angular generator](https://github.com/yeoman/generator-angular)
-version 0.15.1.
+This project is a boilerplate Progressive Web App (PWA) that utilizes Google+ & Meetup.com APIs, built using AngularJS, Angular Material, and running on a Firebase backend.
 
-## Build & development
-
-Run `grunt` for building and `grunt serve` for preview.
-
-## Testing
-
-Running `grunt test` will run the unit tests with karma.
+It is themed for use by GDG Kansas City. Originally designed by Kyle Paul.
