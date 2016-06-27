@@ -384,6 +384,7 @@ module.exports = function (grunt) {
             '*.html',
             'manifest.json',
             'service-worker.js',
+            'sitemap.xml',
             'icons/*.*',
             'images/{,*/}*.{webp}',
             'styles/fonts/{,*/}*.*'
