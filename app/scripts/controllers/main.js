@@ -20,6 +20,8 @@ angular.module('albatrossApp')
     
     vm.navigateTo = function (to, navID) {
       $location.path(to);
+      var content = document.getElementById('main-content');
+      content.scrollTop = 0;
       if (navID) {
         vm.toggleSideNav(navID);
       }
