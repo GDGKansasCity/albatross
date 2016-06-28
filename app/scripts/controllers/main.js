@@ -18,9 +18,11 @@ angular.module('albatrossApp')
       $mdSidenav(menuId).toggle();
     };
     
-    vm.navigateTo = function (to) {
+    vm.navigateTo = function (to, navID) {
       $location.path(to);
-      vm.toggleSideNav('left');
+      if (navID) {
+        vm.toggleSideNav(navID);
+      }
     };
 
     vm.logout = function () {

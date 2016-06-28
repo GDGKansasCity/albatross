@@ -47,11 +47,11 @@
           <h2 style="margin: auto; top: 0; bottom: 0; left: 0; right: 0;">{{ main.config.chapterName }}</h2>
         </div>
         <span hide-md flex="5"></span>
-        <md-button hide-xs hide-sm href="/">Home</md-button>
-        <md-button hide-xs hide-sm href="/events">Events</md-button>
-        <md-button hide-xs hide-sm href="/organizers">Organizers</md-button>
-        <md-button hide-xs hide-sm href="/about">About</md-button>
-        <md-button hide-xs hide-sm href="/admin" ng-show-auth>Config</md-button>
+        <md-button hide-xs hide-sm ng-click="main.navigateTo('/')">Home</md-button>
+        <md-button hide-xs hide-sm ng-click="main.navigateTo('/events')">Events</md-button>
+        <md-button hide-xs hide-sm ng-click="main.navigateTo('/organizers')">Organizers</md-button>
+        <md-button hide-xs hide-sm ng-click="main.navigateTo('/about')">About</md-button>
+        <md-button hide-xs hide-sm ng-click="main.navigateTo('/admin')" ng-show-auth>Config</md-button>
         <md-button hide-xs hide-sm ng-click="main.logout()" ng-show-auth>Logout</md-button>
         <span flex></span>
       </div>
@@ -60,21 +60,21 @@
     <md-sidenav layout="column" class="md-sidenav-left" md-component-id="left" md-whiteframe="4"">
       <md-content flex>
         <md-list>
-          <md-list-item ng-click="main.navigateTo('/')">
+          <md-list-item ng-click="main.navigateTo('/', 'left')">
             <p>Home</p>
           </md-list-item>
-          <md-list-item ng-click="main.navigateTo('/events')">
+          <md-list-item ng-click="main.navigateTo('/events', 'left')">
             <p>Events</p>
           </md-list-item>
-          <md-list-item ng-click="main.navigateTo('/organizers')">
+          <md-list-item ng-click="main.navigateTo('/organizers', 'left')">
             <p>Organizers</p>
           </md-list-item>
-          <md-list-item ng-click="main.navigateTo('/about')">
+          <md-list-item ng-click="main.navigateTo('/about', 'left')">
             <p>About</p>
           </md-list-item>
           <md-divider ng-show-auth></md-divider>
           <md-subheader ng-show-auth>Admin</md-subheader>
-          <md-list-item ng-show-auth ng-click="main.navigateTo('/admin')">
+          <md-list-item ng-show-auth ng-click="main.navigateTo('/admin', 'left')">
             <p>Config</p>
           </md-list-item>
           <md-list-item ng-show-auth ng-click="main.logout()">
