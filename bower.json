@@ -12,7 +12,8 @@
     "angular-sanitize": "^1.5.3",
     "angular-material": "^1.0.9",
     "angularfire": "^2.0.1",
-    "font-awesome": "^4.6.3"
+    "font-awesome": "^4.6.3",
+    "raven-js": "^3.1.1"
   },
   "devDependencies": {
     "angular-mocks": "^1.5.3"
@@ -23,6 +24,12 @@
     "font-awesome": {
       "main": [
         "css/font-awesome.css"
+      ]
+    },
+    "raven-js": {
+      "main": [
+        "dist/raven.js",
+        "dist/plugins/angular.js"
       ]
     }
   }
