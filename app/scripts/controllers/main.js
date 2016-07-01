@@ -14,6 +14,7 @@ angular.module('albatrossApp')
 
     vm.config = Config();
     vm.social = Social();
+    vm.loading = true;
     vm.copyright = date.getFullYear() == '2016' ? '2016' : '2016-' + date.getFullYear();
 
     vm.toggleSideNav = function (menuId) {
@@ -57,6 +58,7 @@ angular.module('albatrossApp')
       
       $http.jsonp(meetupUrl).success(function (data) {
         vm.sponsors = data.results[0].sponsors;
+        vm.loading = false;
       });
     });
   });
