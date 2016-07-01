@@ -269,6 +269,11 @@ module.exports = function (grunt) {
         ],
         patterns: {
           js: [[/(images\/[^''""]*\.(png|jpg|jpeg|gif|webp|svg))/g, 'Replacing references to images']]
+        },
+        blockReplacements: {
+          js: function (block) {
+            return '<script type="text/javascript" src="' + block.dest + '" defer></script>';
+          }
         }
       }
     },

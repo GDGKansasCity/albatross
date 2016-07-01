@@ -2,7 +2,7 @@
   <div ng-show="vm.loading">
     <md-progress-circular md-mode="indeterminate"></md-progress-circular>
   </div>
-  <md-card ng-repeat="post in vm.news" ng-show="vm.news.length">
+  <md-card ng-repeat="post in vm.news" ng-hide="vm.loading">
     <md-card-header>
       <md-card-avatar>
         <img ng-src="{{ post.item.actor.image.url }}" alt="GDG" title="GDG" />
@@ -43,5 +43,10 @@
       </span>
       <md-button ng-href="{{ post.item.url }}" target="_blank" class="md-accent">Read&nbsp;More&nbsp;&#187;</md-button>
     </md-card-actions>
+  </md-card>
+  <md-card ng-hide="vm.loading">
+    <md-card-content layout="row" layout-align="center center">
+      <div class="content-desc"><a href="{{ main.googlePlusLink }}" target="_blank">View&nbsp;More&nbsp;&#187;</a></div>
+    </md-card-content>
   </md-card>
 </div>

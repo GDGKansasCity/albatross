@@ -16,7 +16,7 @@ angular.module('albatrossApp')
 
     vm.config.$loaded().then(function (config) {
       var url = 'https://www.googleapis.com/plus/v1/people/' + config.googleID +
-        '/activities/public?callback=JSON_CALLBACK&maxResults=20&key=' + config.googleKey
+        '/activities/public?callback=JSON_CALLBACK&maxResults=4&key=' + config.googleKey
       $http.jsonp(url).success(function (data) {
         var entries = [], i,
             item, actor, object, itemTitle, html,
