@@ -8,6 +8,9 @@
  * Service in the albatrossApp.
  */
 angular.module('albatrossApp')
-  .service('cover', function () {
-    // AngularJS will instantiate a singleton by calling "new" on this function
+  .factory('Cover', function ($firebaseObject) {
+    return function () {
+      var ref = firebase.database().ref('cover');
+      return $firebaseObject(ref);
+    };
   });

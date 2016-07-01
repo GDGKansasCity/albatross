@@ -8,22 +8,23 @@
  * Controller of the albatrossApp
  */
 angular.module('albatrossApp')
-  .controller('AdminCtrl', function ($mdDialog, $mdToast, User, Admins, Config, Social) {
+  .controller('AdminCtrl', function ($mdDialog, $mdToast, User, Cover, Social, Config, Admins) {
     var vm = this;
 
-    vm.config = Config();
+    vm.cover = Cover();
     vm.social = Social();
+    vm.config = Config();
     vm.admins = Admins();
 
     vm.login = function () {
       User.signIn();
     };
 
-    vm.saveConfig = function () {
-      vm.config.$save().then(function () {
+    vm.saveCover = function () {
+      vm.cover.$save().then(function () {
         $mdToast.show(
           $mdToast.simple()
-            .textContent('Config Saved')
+            .textContent('Cover Banner Saved')
             .position('bottom left')
             .hideDelay(3000)
         );
@@ -35,6 +36,17 @@ angular.module('albatrossApp')
         $mdToast.show(
           $mdToast.simple()
             .textContent('Social Saved')
+            .position('bottom left')
+            .hideDelay(3000)
+        );
+      });
+    };
+
+    vm.saveConfig = function () {
+      vm.config.$save().then(function () {
+        $mdToast.show(
+          $mdToast.simple()
+            .textContent('Config Saved')
             .position('bottom left')
             .hideDelay(3000)
         );
