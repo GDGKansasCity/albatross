@@ -214,6 +214,10 @@
           <md-tooltip md-direction="top">Facebook</md-tooltip>
           <md-icon class="socialIcon" md-font-set="fa fa-lg fa-facebook-square" aria-label="Facebook"></md-icon>
         </a>
+        <a ng-if="main.githubLink" ng-href="{{ main.githubLink }}" target="_blank">
+          <md-tooltip md-direction="top">GitHub</md-tooltip>
+          <md-icon class="socialIcon" md-font-set="fa fa-lg fa-github-square" aria-label="GitHub"></md-icon>
+        </a>
         <a ng-if="main.youtubeLink" ng-href="{{ main.youtubeLink }}" target="_blank">
           <md-tooltip md-direction="top">YouTube</md-tooltip>
           <md-icon class="socialIcon" md-font-set="fa fa-lg fa-youtube-square" aria-label="Youtube"></md-icon>

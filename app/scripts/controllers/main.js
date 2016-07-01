@@ -48,6 +48,7 @@ angular.module('albatrossApp')
       vm.facebookLink = social.facebook ? 'https://www.facebook.com/' + social.facebook : null;
       vm.youtubeLink = social.youtube ? 'https://www.youtube.com/' + social.youtube : null;
       vm.meetupLink = social.meetup ? 'http://www.meetup.com/' + social.meetup : null;
+      vm.githubLink = social.github ? 'http://www.meetup.com/' + social.github : null;
 
       var meetupUrl = 'https://api.meetup.com/2/groups?key=' + vm.meetupKey + 
                     '&offset=0&format=json&group_urlname=' + social.meetup + 
