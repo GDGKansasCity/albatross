@@ -18,22 +18,34 @@
               <h2 class="md-toolbar-tools">Cover Banner</h2>
             </md-toolbar>
             <md-card-content>
-              <form layout="column">
+              <form name="coverForm" layout="column">
                 <md-input-container>
                   <label>Title</label>
-                  <input ng-model="admin.cover.title"/>
+                  <input name="coverTitle" ng-model="admin.cover.title" required/>
+                  <div ng-messages="coverForm.coverTitle.$error">
+                    <div ng-message="required">Title is required.</div>
+                  </div>
                 </md-input-container>
                 <md-input-container>
                   <label>Subtitle</label>
-                  <input ng-model="admin.cover.subtitle"/>
+                  <input name="subtitle"ng-model="admin.cover.subtitle" required/>
+                  <div ng-messages="coverForm.subtitle.$error">
+                    <div ng-message="required">Subtitle is required.</div>
+                  </div>
                 </md-input-container>
                 <md-input-container>
                   <label>Action Button Text</label>
-                  <input ng-model="admin.cover.actionButton"/>
+                  <input name="actionButton" ng-model="admin.cover.actionButton" required/>
+                  <div ng-messages="coverForm.actionButton.$error">
+                    <div ng-message="required">Action Button Text is required.</div>
+                  </div>
                 </md-input-container>
                 <md-input-container>
                   <label>Action Button URL</label>
                   <input name="actionURL" ng-model="admin.cover.actionURL" required/>
+                  <div ng-messages="coverForm.actionURL.$error">
+                    <div ng-message="required">Action Button URL is required.</div>
+                  </div>
                 </md-input-container>
                 <md-input-container>
                   <input type="file" ng-model="admin.cover.image" accept="image/x-png" aria-label="Select a File" />
@@ -95,10 +107,13 @@
               <h2 class="md-toolbar-tools">Config</h2>
             </md-toolbar>
             <md-card-content>
-              <form layout="column">
+              <form name="configForm" layout="column">
                 <md-input-container>
                   <label>Chapter Name</label>
-                  <input ng-model="admin.config.chapterName"/>
+                  <input name="chapterName" ng-model="admin.config.chapterName" required/>
+                  <div ng-messages="configForm.chapterName.$error">
+                    <div ng-message="required">Chapter Name is required.</div>
+                  </div>
                 </md-input-container>
                 <md-input-container>
                   <label>Chapter Website</label>
@@ -110,15 +125,24 @@
                 </md-input-container>
                 <md-input-container>
                   <label>Google+ Chapter ID</label>
-                  <input ng-model="admin.config.googleID"/>
+                  <input name="googleID" ng-model="admin.config.googleID" required/>
+                  <div ng-messages="configForm.googleID.$error">
+                    <div ng-message="required">Google+ Chapter ID is required.</div>
+                  </div>
                 </md-input-container>
                 <md-input-container>
                   <label>Google API Key</label>
-                  <input ng-model="admin.config.googleKey"/>
+                  <input name="googleKey" ng-model="admin.config.googleKey" required/>
+                  <div ng-messages="configForm.googleKey.$error">
+                    <div ng-message="required">Google API Key is required.</div>
+                  </div>
                 </md-input-container>
                 <md-input-container>
                   <label>Meetup.com API Key</label>
-                  <input ng-model="admin.config.meetupKey"/>
+                  <input name="meetupKey" ng-model="admin.config.meetupKey" required/>
+                  <div ng-messages="configForm.meetupKey.$error">
+                    <div ng-message="required">Meetup.com API Key is required.</div>
+                  </div>
                 </md-input-container>
               </form>
             </md-card-content>
