@@ -9,10 +9,12 @@
  */
 angular.module('albatrossApp')
   .controller('MainCtrl', function ($http, $location, $mdSidenav, User, Config, Social) {
-    var vm = this;
+    var vm = this,
+        date = new Date();
 
     vm.config = Config();
     vm.social = Social();
+    vm.copyright = date.getFullYear() == '2016' ? '2016' : '2016-' + date.getFullYear();
 
     vm.toggleSideNav = function (menuId) {
       $mdSidenav(menuId).toggle();
@@ -32,13 +34,16 @@ angular.module('albatrossApp')
     };
 
     vm.config.$loaded().then(function (config) {
+      vm.chapter = config.chapterName;
       vm.website = config.chapterWebsite;
+      vm.email = config.chapterEmail;
       vm.googlePlusLink = 'https://plus.google.com/' + config.googleID;
       vm.gdgLink = 'https://developers.google.com/groups/chapter/' + config.googleID + '/';
       vm.meetupKey = config.meetupKey;
     });
 
     vm.social.$loaded().then(function (social) {
+      vm.social = social;
       vm.twitterLink = social.twitter ? 'https://twitter.com/' + social.twitter : null;
       vm.facebookLink = social.facebook ? 'https://www.facebook.com/' + social.facebook : null;
       vm.youtubeLink = social.youtube ? 'https://www.youtube.com/' + social.youtube : null;

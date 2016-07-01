@@ -1,0 +1,29 @@
+ .background-dark {
+    background: #37474F;
+    color: #FFFFFF;
+}
+.main-footer nav {
+    padding: 48px;
+}
+.main-footer ul {
+    padding: 0px;
+    margin: 0px;
+    list-style-type: none;
+}
+.main-footer ul li {
+    margin: 0px;
+}
+.main-footer ul a,
+.main-footer footer a {
+    color: #FFFFFF;
+    text-decoration: none;
+}
+.main-footer ul a:hover,
+.main-footer footer a:hover {
+    text-decoration: underline;
+    opacity: 1;
+}
+.main-footer footer {
+    text-align: center;
+    padding: 16px;
+}

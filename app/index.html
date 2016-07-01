@@ -29,6 +29,7 @@
   <!-- build:css(.tmp) styles/main.css -->
   <link rel="stylesheet" href="styles/main.css">
   <link rel="stylesheet" href="styles/mc.css">
+  <link rel="stylesheet" href="styles/footer.css">
   <!-- endbuild -->
   <style type="text/css">
     #mc_embed_signup{background:#fff; clear:left; font:14px Helvetica,Arial,sans-serif; }
@@ -88,8 +89,8 @@
       </md-content>
     </md-sidenav>
 
-    <md-content id="main-content" class="md-hue-2" layout-padding flex>
-      <div layout-xs="column" layout-sm="column" layout="row">
+    <md-content id="main-content" class="md-hue-2" flex>
+      <div layout-xs="column" layout-sm="column" layout="row" layout-padding>
         <!-- Main Content -->
         <div flex-gt-sm="45" flex flex-offset-gt-sm="15" ng-view=""></div>
         <!-- Sidebar -->
@@ -164,9 +165,42 @@
           </md-card>
         </div>
       </div>
+
+      <div class="main-footer background-dark">
+        <nav layout-xs="column" layout="row" layout-align="center">
+          <div flex-gt-sm="20" flex>
+            <h3>CONNECT</h3>
+            <ul>
+              <li ng-if="main.googlePlusLink"><a ng-href="{{ main.googlePlusLink }}" target="_blank">Google+</a></li>
+              <li ng-if="main.twitterLink"><a ng-href="{{ main.twitterLink }}" target="_blank">Twitter</a></li>
+              <li ng-if="main.facebookLink"><a ng-href="{{ main.facebookLink }}" target="_blank">Facebook</a></li>
+              <li ng-if="main.meetupLink"><a ng-href="{{ main.meetupLink }}" target="_blank">Meetup.com</a></li>
+            </ul>
+          </div>
+          <div flex-gt-sm="20" flex>
+            <h3>CONTACT</h3>
+            <ul>
+              <li ng-if="main.email"><a ng-href="{{ 'mailto:' + main.email + '?subject=Website%20Info'" target="_blank">{{ main.email }}</a></li>
+              <li ng-if="main.twitterLink"><a ng-href="{{ main.twitterLink }}" target="_blank">@{{ main.social.twitter }}</a></li>
+            </ul>
+          </div>
+          <div flex-gt-sm="20" flex>
+            <h3>COMMUNITY</h3>
+            <ul>
+              <li><a href="https://developers.google.com/groups/" target="_blank">Google Developer Groups</a></li>
+              <li><a href="https://www.womentechmakers.com/" target="_blank">Women Techmakers</a></li>
+              <li><a href="https://developers.google.com/events/devfest/" target="_blank">GDG DevFest Season</a></li>
+              <li><a href="https://developers.google.com/groups/guidelines/" target="_blank">GDG Code of Conduct</a></li>
+            </ul>
+          </div>
+        </nav>
+        <footer>
+          <small>&copy; {{ main.copyright }} {{ main.chapter }} &bull; <a href="https://goo.gl/VkmZOs" target="_blank">Albatross Project</a></small>
+        </footer>
+      </div>
     </md-content>
 
-    <footer style="background-color: #37474F;">
+    <footer class="background-dark">
       <div layout="row" layout-align="center center">
         <a ng-if="main.googlePlusLink" ng-href="{{ main.googlePlusLink }}" rel="publisher" target="_blank">
           <md-tooltip md-direction="top">Google+</md-tooltip>
