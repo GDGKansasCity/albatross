@@ -76,10 +76,17 @@ body {
   float: left;
 }
 
+/* Responsive: Landscape tablets */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .organizer-grid {
+    padding: 25px 100px;
+  }
+}
+
 /* Responsive: Portrait tablets */
 @media (min-width: 640px) and (max-width: 768px) {
   .organizer-grid {
-    padding: 25px 60px;
+    padding: 25px 70px;
     float: left;
   }
 }
@@ -87,7 +94,6 @@ body {
 /* Responsive: Portrait phone */
 @media screen and (max-width: 640px) {
   .organizer-grid {
-    padding: 25px 40px;
-    float: left;
+    padding: 25px 50px;
   }
 }
