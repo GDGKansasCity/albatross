@@ -20,35 +20,54 @@
             <md-card-content>
               <form name="coverForm" layout="column">
                 <md-input-container>
+                  <md-checkbox ng-model="admin.cover.disabled" aria-label="Disable Cover Banner?">
+                    Disable Cover Banner?
+                  </md-checkbox>
+                </md-input-container>
+                <md-input-container>
                   <label>Title</label>
-                  <input name="coverTitle" ng-model="admin.cover.title" required/>
+                  <input name="coverTitle" ng-model="admin.cover.title" ng-disabled="admin.cover.disabled" required/>
                   <div ng-messages="coverForm.coverTitle.$error">
                     <div ng-message="required">Title is required.</div>
                   </div>
                 </md-input-container>
                 <md-input-container>
                   <label>Subtitle</label>
-                  <input name="subtitle"ng-model="admin.cover.subtitle" required/>
+                  <input name="subtitle"ng-model="admin.cover.subtitle" ng-disabled="admin.cover.disabled" required/>
                   <div ng-messages="coverForm.subtitle.$error">
                     <div ng-message="required">Subtitle is required.</div>
                   </div>
                 </md-input-container>
                 <md-input-container>
                   <label>Action Button Text</label>
-                  <input name="actionButton" ng-model="admin.cover.actionButton" required/>
+                  <input name="actionButton" ng-model="admin.cover.actionButton" ng-disabled="admin.cover.disabled" required/>
                   <div ng-messages="coverForm.actionButton.$error">
                     <div ng-message="required">Action Button Text is required.</div>
                   </div>
                 </md-input-container>
                 <md-input-container>
                   <label>Action Button URL</label>
-                  <input name="actionURL" ng-model="admin.cover.actionURL" required/>
+                  <input name="actionURL" ng-model="admin.cover.actionURL" ng-disabled="admin.cover.disabled" required/>
                   <div ng-messages="coverForm.actionURL.$error">
                     <div ng-message="required">Action Button URL is required.</div>
                   </div>
                 </md-input-container>
+                <md-input-container class="md-block">
+                  <input type="file" id="coverImage" ng-model="admin.cover.image" accept="image/x-png" image="admin.cover.coverImage" resize-max-height="1000" resize-max-width="1000" resize-quality="0.7" resize-type="image/png" ng-disabled="admin.cover.disabled" aria-label="Select a File" />
+                  <md-icon class="material-icons">add_a_photo</md-icon>
+                  <img ng-src="{{ admin.cover.coverImage.compressed.dataURL }}" style="padding-top: 10px;width: 40%;height: auto;" />
+                  <div ng-show="admin.imageLoading">
+                    <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+                  </div>
+                </md-input-container>
+                <div ng-show="admin.cover.image">
+                  Current Hero:<br/>
+                  <img ng-src="{{ admin.cover.image }}" style="width: 40%;height: auto;" />
+                </div>
                 <md-input-container>
-                  <input type="file" ng-model="admin.cover.image" accept="image/x-png" aria-label="Select a File" />
+                  <md-checkbox ng-model="admin.cover.clearImage" aria-label="Clear Image?" ng-disabled="admin.cover.disabled">
+                    Clear Current Image?
+                  </md-checkbox>
                 </md-input-container>
               </form>
             </md-card-content>

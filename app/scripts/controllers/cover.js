@@ -8,7 +8,7 @@
  * Controller of the albatrossApp
  */
 angular.module('albatrossApp')
-  .controller('CoverCtrl', function (Cover) {
+  .controller('CoverCtrl', function ($location, Cover) {
     var vm = this;
 
     vm.cover = Cover();
@@ -17,4 +17,14 @@ angular.module('albatrossApp')
     vm.cover.$loaded().then(function (cover) {
       vm.loading = false;
     });
+
+    vm.showHero = function () {
+      if (vm.cover.disabled) {
+        return false;
+      } else if ($location.path() !== '/') {
+        return false;
+      } else {
+        return true;
+      }
+    };
   });
