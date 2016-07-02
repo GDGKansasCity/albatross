@@ -62,6 +62,7 @@
       </div>
     </md-toolbar>
     
+    <!-- SIDENAV -->
     <md-sidenav layout="column" class="md-sidenav-left" md-component-id="left" md-whiteframe="4"">
       <md-content flex>
         <md-list>
@@ -89,11 +90,12 @@
       </md-content>
     </md-sidenav>
 
+    <!-- MAIN -->
     <md-content id="main-content" class="md-hue-2" flex>
       <div layout-xs="column" layout-sm="column" layout="row" layout-padding>
-        <!-- Main Content -->
+        <!-- CONTENT -->
         <div flex-gt-sm="45" flex flex-offset-gt-sm="15" ng-view=""></div>
-        <!-- Sidebar -->
+        <!-- SIDEBAR -->
         <div flex-gt-md="20" flex-md="30" flex>
           <md-card id="follow-us">
             <md-toolbar>
@@ -166,6 +168,7 @@
         </div>
       </div>
 
+      <!-- SUB-FOOTER-->
       <div class="main-footer background-dark">
         <nav layout-xs="column" layout="row" layout-align="center">
           <div flex-gt-sm="20" flex>
@@ -200,6 +203,7 @@
       </div>
     </md-content>
 
+    <!-- FOOTER -->
     <footer class="background-dark">
       <div layout="row" layout-align="center center">
         <a ng-if="main.googlePlusLink" ng-href="{{ main.googlePlusLink }}" rel="publisher" target="_blank">
@@ -293,6 +297,8 @@
   <script src="scripts/app.js"></script>
   <script src="scripts/filters/htmllinky.js"></script>
   <script src="scripts/filters/hashlinky.js"></script>
+  <script src="scripts/directives/ngShowAuth.js"></script>
+  <script src="scripts/directives/ngHideAuth.js"></script>
   <script src="scripts/services/user.js"></script>
   <script src="scripts/services/admins.js"></script>
   <script src="scripts/services/config.js"></script>
@@ -304,8 +310,6 @@
   <script src="scripts/controllers/events.js"></script>
   <script src="scripts/controllers/organizers.js"></script>
   <script src="scripts/controllers/about.js"></script>
-  <script src="scripts/directives/ngShowAuth.js"></script>
-  <script src="scripts/directives/ngHideAuth.js"></script>
   <!-- endbuild -->
 </body>
 </html>
