@@ -13,26 +13,14 @@
       </md-card-header-text>
     </md-card-header>
 
-    <img ng-if="post.object.attachments[0].objectType === 'photo'" 
-        ng-src="{{ post.object.attachments[0].image.url }}" 
-        class="md-card-image" style="height: 50%;"
-        alt="{{ post.object.attachments[0].displayName }}"
-        title="{{ post.object.attachments[0].displayName }}">
-
-    <img ng-if="post.object.attachments[0].objectType === 'article'" 
-        ng-src="{{ post.object.attachments[0].image.url }}" 
-        class="md-card-image" style="height: 50%;"
-        alt="{{ post.object.attachments[0].displayName }}"
-        title="{{ post.object.attachments[0].displayName }}">
-
-    <img ng-if="post.object.attachments[0].objectType === 'album'" 
-        ng-src="{{ post.object.attachments[0].thumbnails[0].image.url }}" 
-        class="md-card-image" style="height: 50%;"
-        alt="{{ post.object.attachments[0].displayName }}"
-        title="{{ post.object.attachments[0].displayName }}">
+    <img ng-if="post.image"
+        ng-src="{{ post.image.url }}" 
+        class="md-card-image"
+        alt="{{ post.image.text }}"
+        title="{{ post.image.text }}">
 
     <md-card-content>
-      <div class="content-desc" ng-bind-html="post.object.content | htmlLinky | hashLinky"></div>
+      <div class="content-desc" ng-bind-html="post.body | htmlLinky | hashLinky"></div>
     </md-card-content>
 
     <md-card-actions layout="row" layout-align="start center">

@@ -18,21 +18,48 @@ angular.module('albatrossApp')
       var url = 'https://www.googleapis.com/plus/v1/people/' + config.googleID +
         '/activities/public?callback=JSON_CALLBACK&maxResults=4&key=' + config.googleKey
       $http.jsonp(url).success(function (data) {
-        var entries = [], i,
-            item, actor, object, itemTitle, html,
-            published, actorImage, entry;
+        var entries = [], i, j,
+            item, actor, object, content, html,
+            published, actorImage, postImage, entry;
 
         for (i = 0; i < data.items.length; i++) {
           item = data.items[i];
           actor = item.actor || {};
           object = item.object || {};
-          itemTitle = object.content;
+          content = object.content;
           published = $filter('date')(new Date(item.published), 'fullDate');
           html = [];
+          postImage = {};
 
-          html.push(itemTitle.replace(new RegExp('\n', 'g'), '<br />').replace('<br><br>', '<br />'));
+          html.push(content.replace(new RegExp('\n', 'g'), '<br />').replace('<br><br>', '<br />'));
           html = html.join('');
           html = $sce.trustAsHtml(html);
+
+          if (object.attachments && object.attachments.length) {
+            switch (object.attachments[0].objectType) {
+              case 'article':
+              case 'photo':
+                postImage =  {
+                  url: object.attachments[0].fullImage.url,
+                  text: object.attachments[0].displayName
+                };
+                break;
+              
+              case 'video':
+                postImage =  {
+                  url: object.attachments[0].image.url,
+                  text: object.attachments[0].displayName
+                };
+                break;
+              
+              case 'album':
+                postImage =  {
+                  url: object.attachments[0].thumbnails[0].image.url,
+                  text: object.attachments[0].displayName
+                };
+                break;
+            }
+          }
 
           actorImage = actor.image.url;
           actorImage = actorImage.substr(0, actorImage.length - 2) + '16';
@@ -50,6 +77,7 @@ angular.module('albatrossApp')
             comments: (object.replies || {}).totalItems,
             icon: actorImage,
             item: item,
+            image: postImage,
             object: object
           };
 
