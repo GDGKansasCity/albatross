@@ -38,6 +38,25 @@ angular.module('albatrossApp')
       });
     };
 
+    var dataURItoBlob = function (dataURI) {
+      var byteString, mimeString;
+
+      if (dataURI.split(',')[0].indexOf('base64') !== -1) {
+        byteString = atob(dataURI.split(',')[1]);
+      } else {
+        byteString = decodeURI(dataURI.split(',')[1]);
+      }
+
+      mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
+
+      var content = new Array();
+      for (var i = 0; i < byteString.length; i++) {
+        content[i] = byteString.charCodeAt(i);
+      }
+
+      return new Blob([new Uint8Array(content)], {type: mimeString});
+    };
+
     vm.handleImageAdd = function () {
       vm.imageLoading = true;
       $timeout(function () {
@@ -62,30 +81,12 @@ angular.module('albatrossApp')
       }, 2000);
     };
 
-    var dataURItoBlob = function (dataURI) {
-      var byteString, mimeString;
-
-      if (dataURI.split(',')[0].indexOf('base64') !== -1) {
-        byteString = atob(dataURI.split(',')[1]);
-      } else {
-        byteString = decodeURI(dataURI.split(',')[1]);
-      }
-
-      mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
-
-      var content = new Array();
-      for (var i = 0; i < byteString.length; i++) {
-        content[i] = byteString.charCodeAt(i);
-      }
-
-      return new Blob([new Uint8Array(content)], {type: mimeString});
-    };
-
-
-    vm.cover.$loaded().then(function (cover) {
-      $scope.$watch('vm.cover.coverImage', function() {
-        document.getElementById('coverImage').addEventListener('change', vm.handleImageAdd, false);
-      }, true);
+    vm.cover.$loaded().then(function () {
+      $timeout(function () {
+        $scope.$watch('vm.cover.coverImage', function() {
+          document.getElementById('coverImage').addEventListener('change', vm.handleImageAdd, false);
+        }, true);
+      }, 1000);
     });
 
     vm.saveSocial = function () {
