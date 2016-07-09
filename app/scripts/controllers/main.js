@@ -15,7 +15,7 @@ angular.module('albatrossApp')
     vm.config = Config();
     vm.social = Social();
     vm.loading = true;
-    vm.copyright = date.getFullYear() == '2016' ? '2016' : '2016-' + date.getFullYear();
+    vm.copyright = '2012 - ' + date.getFullYear();
 
     vm.toggleSideNav = function (menuId) {
       $mdSidenav(menuId).toggle();
