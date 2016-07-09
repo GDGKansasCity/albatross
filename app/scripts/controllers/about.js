@@ -8,7 +8,7 @@
  * Controller of the albatrossApp
  */
 angular.module('albatrossApp')
-  .controller('AboutCtrl', function ($http, $sce, Config) {
+  .controller('AboutCtrl', function ($scope, $window, $location, $http, $sce, Config) {
     var vm = this;
 
     vm.loading = true;
@@ -26,5 +26,9 @@ angular.module('albatrossApp')
         vm.desc = 'Sorry, we failed to retrieve the About text from the Google+ API.';
         vm.loading = false;
       });
+    });
+
+    $scope.$on('$viewContentLoaded', function () {
+      $window.ga('send', 'pageview', { page: $location.path() });
     });
   });

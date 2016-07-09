@@ -8,7 +8,7 @@
  * Controller of the albatrossApp
  */
 angular.module('albatrossApp')
-  .controller('OrganizersCtrl', function ($http, $timeout, Config) {
+  .controller('OrganizersCtrl', function ($scope, $window, $location, $http, $timeout, Config) {
     var vm = this;
 
     vm.config = Config();
@@ -38,5 +38,9 @@ angular.module('albatrossApp')
         vm.error = 'Sorry, we failed to retrieve the Organizers from the Google+ API.';
         vm.loading = false;
       });
+    });
+
+    $scope.$on('$viewContentLoaded', function () {
+      $window.ga('send', 'pageview', { page: $location.path() });
     });
   });

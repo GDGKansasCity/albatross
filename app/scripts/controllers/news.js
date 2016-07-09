@@ -8,7 +8,7 @@
  * Controller of the albatrossApp
  */
 angular.module('albatrossApp')
-  .controller('NewsCtrl', function ($http, $timeout, $filter, $sce, Config) {
+  .controller('NewsCtrl', function ($scope, $window, $location, $http, $timeout, $filter, $sce, Config) {
     var vm = this;
 
     vm.config = Config();
@@ -89,5 +89,9 @@ angular.module('albatrossApp')
         });
         vm.loading = false;
       });
+    });
+
+    $scope.$on('$viewContentLoaded', function () {
+      $window.ga('send', 'pageview', { page: $location.path() });
     });
   });

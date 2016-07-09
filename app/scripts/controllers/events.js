@@ -8,7 +8,7 @@
  * Controller of the albatrossApp
  */
 angular.module('albatrossApp')
-  .controller('EventsCtrl', function ($http, $filter, $window, Config) {
+  .controller('EventsCtrl', function ($scope, $window, $location, $http, $filter, Config) {
     var vm = this;
 
     vm.config = Config();
@@ -68,4 +68,8 @@ angular.module('albatrossApp')
       $window.open(link, '_blank');
       return false;
     };
+
+    $scope.$on('$viewContentLoaded', function () {
+      $window.ga('send', 'pageview', { page: $location.path() });
+    });
   });

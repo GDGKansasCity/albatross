@@ -8,7 +8,7 @@
  * Controller of the albatrossApp
  */
 angular.module('albatrossApp')
-  .controller('AdminCtrl', function ($scope, $timeout, $mdDialog, $mdToast, User, Cover, Social, Config, Admins) {
+  .controller('AdminCtrl', function ($scope, $window, $location, $timeout, $mdDialog, $mdToast, User, Cover, Social, Config, Admins) {
     var vm = this,
         storage = firebase.storage();
 
@@ -147,4 +147,8 @@ angular.module('albatrossApp')
         );
       });
     };
+
+    $scope.$on('$viewContentLoaded', function () {
+      $window.ga('send', 'pageview', { page: $location.path() });
+    });
   });
