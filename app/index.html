@@ -48,14 +48,13 @@
           <img src="images/gdg_icon.png" style="width: 35px; height: 38px;" />
           <h2 style="margin: auto; top: 0; bottom: 0; left: 0; right: 0;">{{ main.config.chapterName }}</h2>
         </div>
-        <span hide-sm flex="5"></span>
+        <span flex></span>
         <md-button hide-xs hide-sm ng-click="main.navigateTo('/')">Home</md-button>
         <md-button hide-xs hide-sm ng-click="main.navigateTo('/events')">Events</md-button>
         <md-button hide-xs hide-sm ng-click="main.navigateTo('/organizers')">Organizers</md-button>
         <md-button hide-xs hide-sm ng-click="main.navigateTo('/about')">About</md-button>
         <md-button hide-xs hide-sm ng-click="main.navigateTo('/admin')" ng-show-auth>Config</md-button>
         <md-button hide-xs hide-sm ng-click="main.logout()" ng-show-auth>Logout</md-button>
-        <span flex></span>
         <md-button hide-gt-sm class="md-icon-button" ng-click="main.toggleSideNav('right')">
           <md-icon class="material-icons">menu</md-icon>
         </md-button>
