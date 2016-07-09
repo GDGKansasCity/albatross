@@ -31,6 +31,16 @@
   background-position: center;
 }
 
+/* Material Design Overrides */
+md-sidenav,
+md-sidenav.md-locked-open-add-active,
+md-sidenav.md-closed.md-locked-open-add-active,
+md-sidenav.md-locked-open {
+  width: 200px;
+  min-width: 200px;
+  max-width: 200px;
+}
+
 .login-button {
   position: absolute;
   margin: auto;
@@ -79,9 +89,6 @@ body {
   word-wrap: break-word;
 
   -ms-word-break: break-all;
-  /* This is the dangerous one in WebKit, as it breaks things wherever */
-  word-break: break-all;
-  /* Instead use this non-standard one: */
   word-break: break-word;
 
   /* Adds a hyphen where the word breaks, if supported (No Blink) */
