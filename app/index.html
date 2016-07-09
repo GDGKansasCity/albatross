@@ -111,7 +111,7 @@
       </div>
       <!-- HERO (Mobile) -->
       <div hide-gt-xs ng-controller="CoverCtrl as hero" ng-show="hero.showHero()" ng-hide="hero.loading">
-        <md-card>
+        <md-card layout-fill>
           <img ng-src="{{ hero.cover.image }}" 
               class="md-card-image" style="height: 50%;"
               alt="{{ hero.cover.title }}"
