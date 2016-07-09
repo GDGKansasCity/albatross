@@ -93,11 +93,11 @@
     <!-- MAIN -->
     <md-content id="main-content" class="md-hue-2" flex>
       <!-- HERO -->
-      <div ng-controller="CoverCtrl as hero" ng-show="hero.showHero()">
+      <div hide-xs ng-controller="CoverCtrl as hero" ng-show="hero.showHero()" ng-hide="hero.loading">
         <md-toolbar class="md-hue-1 hero-image" ng-style="{'background-image': 'url(' + hero.cover.image + ')'}" md-whiteframe="4">
           <div id="cover" layout="column" layout-align="end center" layout-padding>
-            <p>&nbsp;</p>
-            <p>&nbsp;</p>
+            <p hide-xs>&nbsp;</p>
+            <p hide-xs>&nbsp;</p>
             <div flex="50" layout="column" layout-align="end start">
               <h2 style="margin-bottom: -5px">{{ hero.cover.title }}</h2>
               <span>{{ hero.cover.subtitle }}</span>
@@ -109,6 +109,25 @@
             </div>
           </div>
         </md-toolbar>
+      </div>
+      <!-- HERO (Mobile) -->
+      <div hide-gt-xs ng-controller="CoverCtrl as hero" ng-show="hero.showHero()" ng-hide="hero.loading">
+        <md-card>
+          <img ng-src="{{ hero.cover.image }}" 
+              class="md-card-image" style="height: 50%;"
+              alt="{{ hero.cover.title }}"
+              title="{{ hero.cover.title }}">
+
+          <md-card-content>
+            <p style="font-weight: bold;">{{ hero.cover.title }}</p>
+            <div class="content-desc" ng-bind-html="hero.cover.subtitle"></div>
+          </md-card-content>
+
+          <md-card-actions layout="row" layout-align="start center">
+            <span flex></span>
+            <md-button ng-href="{{ hero.cover.actionURL }}" target="_blank" class="md-accent" aria-label="Hero Call-to-Action">{{ hero.cover.actionButton }}&nbsp;&#187;</md-button>
+          </md-card-actions>
+        </md-card>
       </div>
 
       <div layout-xs="column" layout-sm="column" layout="row" layout-padding>
