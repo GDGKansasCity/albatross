@@ -14,7 +14,7 @@ angular.module('albatrossApp')
     vm.cover = Cover();
     vm.loading = true;
 
-    vm.cover.$loaded().then(function (cover) {
+    vm.cover.$loaded().then(function () {
       vm.loading = false;
     });
 

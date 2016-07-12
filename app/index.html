@@ -92,8 +92,8 @@
     <!-- MAIN -->
     <md-content id="main-content" class="md-hue-2" flex>
       <!-- HERO -->
-      <div hide-xs ng-controller="CoverCtrl as hero" ng-show="hero.showHero()" ng-hide="hero.loading">
-        <md-toolbar class="md-hue-1 hero-image" ng-style="{'background-image': 'url(' + hero.cover.image + ')'}" md-whiteframe="4">
+      <div hide-xs ng-controller="CoverCtrl as hero" ng-show="hero.showHero()">
+        <md-toolbar ng-hide="hero.loading" class="md-hue-1 hero-image" ng-style="{'background-image': 'url(' + hero.cover.image + ')'}" md-whiteframe="4">
           <div id="cover" layout="column" layout-align="end center" layout-padding>
             <p>&nbsp;</p>
             <div flex="50" layout="column" layout-align="end start">
@@ -109,8 +109,8 @@
         </md-toolbar>
       </div>
       <!-- HERO (Mobile) -->
-      <div hide-gt-xs ng-controller="CoverCtrl as hero" ng-show="hero.showHero()" ng-hide="hero.loading">
-        <md-card layout-fill>
+      <div hide-gt-xs ng-controller="CoverCtrl as hero" ng-show="hero.showHero()">
+        <md-card ng-hide="hero.loading" layout-fill>
           <img ng-src="{{ hero.cover.image }}" 
               class="md-card-image" style="height: 50%;"
               alt="{{ hero.cover.title }}"
