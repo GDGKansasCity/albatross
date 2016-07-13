@@ -99,21 +99,21 @@ body {
 }
 
 .organizer-grid {
-  padding: 25px 50px;
+  padding: 25px 40px;
   float: left;
 }
 
 /* Responsive: Landscape tablets */
 @media (min-width: 768px) and (max-width: 1024px) {
   .organizer-grid {
-    padding: 25px 100px;
+    padding: 25px 15px;
   }
 }
 
 /* Responsive: Portrait tablets */
 @media (min-width: 640px) and (max-width: 768px) {
   .organizer-grid {
-    padding: 25px 70px;
+    padding: 25px 3px;
     float: left;
   }
 }
