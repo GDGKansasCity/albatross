@@ -24,10 +24,12 @@
     </md-card-content>
 
     <md-card-actions layout="row" layout-align="start center">
-      <span flex>
+      <span layout="row" flex>
         <md-button hide-xs ng-disabled="true">{{ post.comments }} Comment<span ng-show="post.comments != 1">s</span></md-button>
         <md-button hide-xs ng-disabled="true">{{ post.reshares }} share<span ng-show="post.reshares != 1">s</span></md-button>
-        <div class="g-plusone" style="padding: 10px;" data-size="medium" data-annotation="bubble" data-href="{{ post.item.url }}"></div>
+        <div style="padding: 8px 12px 0;">
+          <div class="g-plusone" data-size="medium" data-annotation="bubble" data-href="{{ post.item.url }}"></div>
+        </div>
       </span>
       <md-button ng-href="{{ post.item.url }}" target="_blank" class="md-accent">Read&nbsp;More&nbsp;&#187;</md-button>
     </md-card-actions>
