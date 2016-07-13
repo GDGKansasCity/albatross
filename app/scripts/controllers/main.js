@@ -8,7 +8,7 @@
  * Controller of the albatrossApp
  */
 angular.module('albatrossApp')
-  .controller('MainCtrl', function ($http, $location, $mdSidenav, User, Config, Social) {
+  .controller('MainCtrl', function ($http, $location, User, Config, Social) {
     var vm = this,
         date = new Date();
 
@@ -16,18 +16,11 @@ angular.module('albatrossApp')
     vm.social = Social();
     vm.loading = true;
     vm.copyright = '2012 - ' + date.getFullYear();
-
-    vm.toggleSideNav = function (menuId) {
-      $mdSidenav(menuId).toggle();
-    };
     
-    vm.navigateTo = function (to, navID) {
+    vm.navigateTo = function (to) {
       $location.path(to);
       var content = document.getElementById('main-content');
       content.scrollTop = 0;
-      if (navID) {
-        vm.toggleSideNav(navID);
-      }
     };
 
     vm.logout = function () {
