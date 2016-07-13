@@ -31,6 +31,10 @@ angular.module('albatrossApp')
           html = [];
           postImage = {};
 
+          if (item.annotation) {
+            content = item.annotation;
+          }
+
           html.push(content.replace(new RegExp('\n', 'g'), '<br />').replace('<br><br>', '<br />'));
           html = html.join('');
           html = $sce.trustAsHtml(html);
