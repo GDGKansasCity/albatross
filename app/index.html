@@ -120,7 +120,7 @@
     <md-content id="main-content" class="md-hue-2" flex>
       <!-- HERO -->
       <div hide-xs ng-controller="CoverCtrl as hero" ng-show="hero.showHero()">
-        <md-toolbar ng-hide="hero.loading" class="md-hue-1 hero-image" ng-style="{'background-image': 'url(' + hero.cover.image + ')'}" md-whiteframe="4">
+        <md-toolbar class="md-hue-1 hero-image" ng-style="{'background-image': 'url(' + hero.cover.image + ')'}" md-whiteframe="4">
           <div id="cover" layout="column" layout-align="end center" layout-padding>
             <p>&nbsp;</p>
             <div flex="50" layout="column" layout-align="end start">
@@ -137,20 +137,21 @@
       </div>
       <!-- HERO (Mobile) -->
       <div hide-gt-xs ng-controller="CoverCtrl as hero" ng-show="hero.showHero()">
-        <md-card ng-hide="hero.loading" layout-fill>
-          <img ng-src="{{ hero.cover.image }}" 
+        <md-card layout-fill>
+          <img ng-src="{{ hero.cover.image }}"
+              ng-hide="hero.loading"
               class="md-card-image" style="height: 50%;"
               alt="{{ hero.cover.title }}"
               title="{{ hero.cover.title }}">
 
           <md-card-content>
-            <p style="font-weight: bold;">{{ hero.cover.title }}</p>
-            <div class="content-desc" ng-bind-html="hero.cover.subtitle"></div>
+            <p style="font-weight: bold;" ng-bind-html="hero.cover.title" ng-hide="hero.loading"></p>
+            <div class="content-desc" ng-bind-html="hero.cover.subtitle" ng-hide="hero.loading"></div>
           </md-card-content>
 
           <md-card-actions layout="row" layout-align="start center">
             <span flex></span>
-            <md-button ng-href="{{ hero.cover.actionURL }}" target="_blank" class="md-accent" aria-label="Hero Call-to-Action">{{ hero.cover.actionButton }}&nbsp;&#187;</md-button>
+            <md-button ng-href="{{ hero.cover.actionURL }}" target="_blank" class="md-accent" aria-label="Hero Call-to-Action" ng-hide="hero.loading">{{ hero.cover.actionButton }}&nbsp;&#187;</md-button>
           </md-card-actions>
         </md-card>
       </div>
