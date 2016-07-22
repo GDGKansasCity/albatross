@@ -8,7 +8,7 @@
  * Controller of the albatrossApp
  */
 angular.module('albatrossApp')
-  .controller('EventsCtrl', function ($scope, $window, $location, $http, $filter, Config) {
+  .controller('EventsCtrl', function ($scope, $window, $location, $http, $filter, $mdDialog, Config) {
     var vm = this;
 
     vm.config = Config();
@@ -64,10 +64,33 @@ angular.module('albatrossApp')
       getPastEventsPage(1);
     });
 
-    vm.navigateTo = function (link) {
-      $window.open(link, '_blank');
-      return false;
+    vm.viewEvent = function (event, ev) {
+      $mdDialog.show({
+        controller: DialogController,
+        templateUrl: 'views/event.dialog.html',
+        parent: angular.element(document.body),
+        targetEvent: ev,
+        clickOutsideToClose: true,
+        resolve: {
+          event: function () {
+            return event;
+          }
+        }
+      });
     };
+
+    function DialogController ($scope, $mdDialog, event) {
+      $scope.event = event;
+
+      $scope.navigateTo = function (link) {
+        $window.open(link, '_blank');
+        return false;
+      };
+      
+      $scope.closeDialog = function() {
+        $mdDialog.hide();
+      };
+    }
 
     $scope.$on('$viewContentLoaded', function () {
       $window.ga('send', 'pageview', { page: $location.path() });
