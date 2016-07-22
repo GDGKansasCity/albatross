@@ -71,7 +71,7 @@ angular.module('albatrossApp')
           entry = {
             via: {
               name: 'Google+',
-              url: item.url
+              url: (object.attachments && object.attachments[0].objectType === 'event') ? object.attachments[0].url : item.url
             },
             published: published,
             body: html,
