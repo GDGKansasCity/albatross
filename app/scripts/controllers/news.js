@@ -45,7 +45,7 @@ angular.module('albatrossApp')
               case 'article':
               case 'photo':
                 postImage =  {
-                  url: object.attachments[0].fullImage.url,
+                  url: (object.attachments[0].fullImage ? object.attachments[0].fullImage.url : null),
                   text: object.attachments[0].displayName
                 };
                 break;
