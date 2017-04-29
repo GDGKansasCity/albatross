@@ -21,13 +21,14 @@ angular
   ])
   .config(function () {
     // Firebase Config
-    var config = {
-      apiKey: "AIzaSyBRFFP_iZ3l82cD9ChchMlkz7fMMCa_XW8",   // Firebase API key
-      authDomain: "gdg-kc.firebaseapp.com",                // Firebase Auth domain ("*.firebaseapp.com")
-      databaseURL: "https://gdg-kc.firebaseio.com",        // Firebase Database URL ("https://*.firebaseio.com")
-      storageBucket: "gdg-kc.appspot.com"                  // Firebase Storage bucket ("*.appspot.com")
-    };
-    firebase.initializeApp(config);
+    firebase.initializeApp({
+      "apiKey": "AIzaSyBRFFP_iZ3l82cD9ChchMlkz7fMMCa_XW8",
+      "databaseURL": "https://gdg-kc.firebaseio.com",
+      "storageBucket": "gdg-kc.appspot.com",
+      "authDomain": "gdg-kc.firebaseapp.com",
+      "messagingSenderId": "963693671257",
+      "projectId": "gdg-kc"
+    });
   })
   .config(function ($sceDelegateProvider) {
     $sceDelegateProvider.resourceUrlWhitelist([
