@@ -222,7 +222,7 @@
                 <md-progress-circular md-mode="indeterminate"></md-progress-circular>
               </div>
               <div ng-hide="main.loading" layout-xs="row" layout-sm="row" layout="column" layout-align="center center" layout-wrap>
-                <a ng-repeat="sponsor in main.sponsors" ng-href="{{ sponsor.url }}">
+                <a ng-repeat="sponsor in main.sponsors" ng-href="{{ sponsor.url }}" target="_blank">
                   <md-tooltip md-direction="left">{{ sponsor.name }}</md-tooltip>
                   <img ng-src="{{ sponsor.image_url }}" style="padding: 15px;" />
                 </a>
