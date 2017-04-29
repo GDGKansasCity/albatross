@@ -13,7 +13,7 @@
       </md-card-header-text>
     </md-card-header>
 
-    <img ng-if="post.image"
+    <img ng-if="post.image && post.image.url"
         ng-src="{{ post.image.url }}" 
         class="md-card-image"
         alt="{{ post.image.text }}"
