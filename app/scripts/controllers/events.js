@@ -11,7 +11,7 @@ angular.module('albatrossApp')
   .controller('EventsCtrl', function ($scope, $window, $location, $http, $filter, $mdDialog, Config) {
     var vm = this;
 
-    vm.config = Config();
+    vm.config = new Config();
     vm.events = { past: [], future: [] };
     vm.loading = true;
 

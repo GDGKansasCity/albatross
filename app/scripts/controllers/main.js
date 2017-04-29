@@ -12,8 +12,8 @@ angular.module('albatrossApp')
     var vm = this,
         date = new Date();
 
-    vm.config = Config();
-    vm.social = Social();
+    vm.config = new Config();
+    vm.social = new Social();
     vm.loading = true;
     vm.copyright = '2012 - ' + date.getFullYear();
     

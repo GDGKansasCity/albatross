@@ -11,7 +11,7 @@ angular.module('albatrossApp')
   .controller('CoverCtrl', function ($location, Cover) {
     var vm = this;
 
-    vm.cover = Cover();
+    vm.cover = new Cover();
     vm.loading = true;
 
     vm.cover.$loaded().then(function () {

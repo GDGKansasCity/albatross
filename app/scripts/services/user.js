@@ -11,9 +11,9 @@ angular.module('albatrossApp')
   .service('User', function ($location, $firebaseAuth, Admins) {
     var self = this,
         auth = $firebaseAuth(),
-        admins = Admins();
+        admins = new Admins();
 
-    self.signIn = function (ev) {
+    self.signIn = function () {
       auth.$signInWithPopup("google").then(function (fbUser) {
         var allowedUser = false;
         admins.$loaded().then(function (list) {

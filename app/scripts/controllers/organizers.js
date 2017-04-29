@@ -11,7 +11,7 @@ angular.module('albatrossApp')
   .controller('OrganizersCtrl', function ($scope, $window, $location, $http, $timeout, Config) {
     var vm = this;
 
-    vm.config = Config();
+    vm.config = new Config();
     vm.loading = true;
 
     vm.config.$loaded().then(function (config) {

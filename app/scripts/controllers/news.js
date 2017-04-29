@@ -11,12 +11,11 @@ angular.module('albatrossApp')
   .controller('NewsCtrl', function ($scope, $window, $location, $http, $timeout, $filter, $sce, Config) {
     var vm = this;
 
-    vm.config = Config();
+    vm.config = new Config();
     vm.loading = true;
 
     vm.config.$loaded().then(function (config) {
-      var url = 'https://www.googleapis.com/plus/v1/people/' + config.googleID +
-        '/activities/public?maxResults=4&key=' + config.googleKey
+      var url = 'https://www.googleapis.com/plus/v1/people/' + config.googleID + '/activities/public?maxResults=4&key=' + config.googleKey;
       $http.jsonp(url, {jsonpCallbackParam: 'callback'}).then(function (results) {
         var entries = [], i,
             item, actor, object, content, html,

@@ -12,10 +12,10 @@ angular.module('albatrossApp')
     var vm = this,
         storage = firebase.storage();
 
-    vm.cover = Cover();
-    vm.social = Social();
-    vm.config = Config();
-    vm.admins = Admins();
+    vm.cover = new Cover();
+    vm.social = new Social();
+    vm.config = new Config();
+    vm.admins = new Admins();
     vm.imageLoading = false;
 
     vm.login = function () {
@@ -49,7 +49,7 @@ angular.module('albatrossApp')
 
       mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
 
-      var content = new Array();
+      var content = [];
       for (var i = 0; i < byteString.length; i++) {
         content[i] = byteString.charCodeAt(i);
       }
