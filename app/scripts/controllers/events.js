@@ -16,9 +16,14 @@ angular.module('albatrossApp')
     vm.loading = true;
 
     vm.config.$loaded().then(function (config) {
-      var url = 'https://hub.gdgx.io/api/v1/chapters/' + config.googleID + '/events/upcoming?callback=JSON_CALLBACK',
-          headers = { 'headers': { 'Accept': 'application/json;' }, 'timeout': 10000 };
-      $http.jsonp(url, headers).success(function (data) {
+      var url = 'https://hub.gdgx.io/api/v1/chapters/' + config.googleID + '/events/upcoming',
+          jsonp_config = {
+            'headers': { 'Accept': 'application/json;' },
+            'timeout': 10000,
+            'jsonpCallbackParam': 'callback'
+          };
+      $http.jsonp(url, jsonp_config).then(function (results) {
+        var data = results.data;
         for (var i = data.items.length - 1; i >= 0; i--) {
           if (data.items[i].about) {
             data.items[i].about = data.items[i].about.replace(new RegExp('<br />', 'g'), ''); // rip out extra breaks
@@ -30,16 +35,20 @@ angular.module('albatrossApp')
         }
         vm.events.future = $filter('orderBy')(vm.events.future, 'start', false);
         vm.loading = false;
-      })
-      .error(function (response) {
+      }, function () {
         vm.upcomingError = 'Sorry, we failed to retrieve the upcoming events from the GDG-X Hub API.';
         vm.loading = false;
       });
 
       var getPastEventsPage = function (page) {
-        var url = 'https://hub.gdgx.io/api/v1/chapters/' + config.googleID + '/events/past?callback=JSON_CALLBACK&page=' + page,
-        	  headers = { 'headers': {'Accept': 'application/json;'}, 'timeout': 10000 };
-        $http.jsonp(url, headers).success(function (data) {
+        var url = 'https://hub.gdgx.io/api/v1/chapters/' + config.googleID + '/events/past?page=' + page,
+          jsonp_config = {
+            'headers': { 'Accept': 'application/json;' },
+            'timeout': 10000,
+            'jsonpCallbackParam': 'callback'
+          };
+        $http.jsonp(url, jsonp_config).then(function (results) {
+          var data = results.data;
           for (var i = data.items.length - 1; i >= 0; i--) {
             if (data.items[i].about) {
               data.items[i].about = data.items[i].about.replace(new RegExp('<br />', 'g'), ''); // rip out extra breaks
@@ -55,8 +64,7 @@ angular.module('albatrossApp')
           } else {
             getPastEventsPage(page + 1);
           }
-        })
-        .error(function (response) {
+        }, function () {
           vm.pastError = 'Sorry, we failed to retrieve the past events from the GDG-X Hub API.';
           vm.loading = false;
         });

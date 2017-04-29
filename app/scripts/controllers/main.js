@@ -47,11 +47,11 @@ angular.module('albatrossApp')
 
       var meetupUrl = 'https://api.meetup.com/2/groups?key=' + vm.meetupKey + 
                     '&offset=0&format=json&group_urlname=' + social.meetup + 
-                    '&photo-host=public&page=20&radius=25.0&fields=sponsors&order=id&desc=false' +
-                    '&sig_id=12889940&sig=ece277cfc4be272311affb8a8ef00f812181d88a&callback=JSON_CALLBACK';
+                    '&photo-host=secure&page=20&radius=25.0&fields=sponsors&order=id&desc=false' +
+                    '&sig_id=12889940&sig=ece277cfc4be272311affb8a8ef00f812181d88a';
       
-      $http.jsonp(meetupUrl).success(function (data) {
-        vm.sponsors = data.results[0].sponsors;
+      $http.jsonp(meetupUrl, {jsonpCallbackParam: 'callback'}).then(function (results) {
+        vm.sponsors = results.data.results[0].sponsors;
         vm.loading = false;
       });
     });

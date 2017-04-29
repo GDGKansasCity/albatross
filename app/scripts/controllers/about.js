@@ -15,14 +15,13 @@ angular.module('albatrossApp')
     vm.config = Config();
 
     vm.config.$loaded().then(function (config) {
-      var url = 'https://www.googleapis.com/plus/v1/people/' + config.googleID + '?callback=JSON_CALLBACK&key=' + config.googleKey;
-      $http.jsonp(url + '&fields=aboutMe')
-      .success(function(data) {
+      var url = 'https://www.googleapis.com/plus/v1/people/' + config.googleID + '?key=' + config.googleKey;
+      $http.jsonp(url + '&fields=aboutMe').then(function (results) {
+        var data = results.data;
         vm.desc = data.aboutMe;
         $sce.trustAsHtml(vm.desc);
         vm.loading = false;
-      })
-      .error(function() {
+      }, function () {
         vm.desc = 'Sorry, we failed to retrieve the About text from the Google+ API.';
         vm.loading = false;
       });

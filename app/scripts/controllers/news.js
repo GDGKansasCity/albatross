@@ -16,11 +16,12 @@ angular.module('albatrossApp')
 
     vm.config.$loaded().then(function (config) {
       var url = 'https://www.googleapis.com/plus/v1/people/' + config.googleID +
-        '/activities/public?callback=JSON_CALLBACK&maxResults=4&key=' + config.googleKey
-      $http.jsonp(url).success(function (data) {
-        var entries = [], i, j,
+        '/activities/public?maxResults=4&key=' + config.googleKey
+      $http.jsonp(url, {jsonpCallbackParam: 'callback'}).then(function (results) {
+        var entries = [], i,
             item, actor, object, content, html,
-            published, actorImage, postImage, entry;
+            published, actorImage, postImage, entry,
+            data = results.data;
 
         for (i = 0; i < data.items.length; i++) {
           item = data.items[i];

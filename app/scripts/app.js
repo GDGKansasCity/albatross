@@ -19,7 +19,7 @@ angular
     'ngMaterial',
     'firebase'
   ])
-  .config(function ($routeProvider, $locationProvider, $mdThemingProvider) {
+  .config(function () {
     // Firebase Config
     var config = {
       apiKey: "AIzaSyBRFFP_iZ3l82cD9ChchMlkz7fMMCa_XW8",   // Firebase API key
@@ -28,7 +28,23 @@ angular
       storageBucket: "gdg-kc.appspot.com"                  // Firebase Storage bucket ("*.appspot.com")
     };
     firebase.initializeApp(config);
+  })
+  .config(function ($sceDelegateProvider) {
+    $sceDelegateProvider.resourceUrlWhitelist([
+      // Allow same origin resource loads.
+      'self',
+      // Allow loading from our asset domains
+      'https://www.googleapis.com/plus/**',
+      'https://api.meetup.com/**',
+      'https://hub.gdgx.io/api/**'
+    ]);
 
+    // The blacklist overrides the whitelist so the open redirect here is blocked.
+    // $sceDelegateProvider.resourceUrlBlacklist([
+    //   'https://example.com/**'
+    // ]);
+  })
+  .config(function ($mdThemingProvider) {
     // MD Theme
     $mdThemingProvider.theme('default')
       .primaryPalette('blue-grey', {
@@ -42,7 +58,8 @@ angular
         'hue-2': '100',
         'hue-3': '800'
       });
-
+  })
+  .config(function ($routeProvider, $locationProvider) {
     // HTML5 Routes
     $locationProvider.html5Mode(true);
 
