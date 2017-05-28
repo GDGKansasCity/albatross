@@ -19,18 +19,6 @@ angular
     'ngMaterial',
     'firebase'
   ])
-  .config(function () {
-    // Initialize Firebase
-    var config = {
-      apiKey: "AIzaSyBRFFP_iZ3l82cD9ChchMlkz7fMMCa_XW8",
-      authDomain: "gdg-kc.firebaseapp.com",
-      databaseURL: "https://gdg-kc.firebaseio.com",
-      projectId: "gdg-kc",
-      storageBucket: "gdg-kc.appspot.com",
-      messagingSenderId: "963693671257"
-    };
-    firebase.initializeApp(config);
-  })
   .config(function ($sceDelegateProvider) {
     $sceDelegateProvider.resourceUrlWhitelist([
       // Allow same origin resource loads.
