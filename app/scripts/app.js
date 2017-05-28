@@ -37,8 +37,7 @@ angular
       'self',
       // Allow loading from our asset domains
       'https://www.googleapis.com/plus/**',
-      'https://api.meetup.com/**',
-      'https://hub.gdgx.io/api/**'
+      'https://api.meetup.com/**'
     ]);
 
     // The blacklist overrides the whitelist so the open redirect here is blocked.

@@ -12,18 +12,13 @@
     </div>
   </md-toolbar>
   <md-dialog-content layout-padding>
-    <div class="content-desc" ng-bind-html="event.about | htmlLinky | hashLinky"></div>
-    <div layout="row" layout-padding layout-wrap>
-      <span class="content-desc" ng-repeat="tag in event.tags">
-        <span ng-if="!first">&nbsp;</span><a ng-href="https://plus.google.com/s/%23{{ tag }}" target="_blank">#{{ tag }}</a>&nbsp;
-      </span>
-    </div>
+    <div class="content-desc" ng-bind-html="event.description | htmlLinky | hashLinky"></div>
   </md-dialog-content>
   <md-dialog-actions>
-    <md-button ng-if="event.locationUrl" class="dialog-class" ng-click="navigateTo(event.locationUrl)" aria-label="Get Directions">
+    <md-button ng-if="event.locationUrl" class="dialog-class md-primary" ng-click="navigateTo(event.locationUrl)" aria-label="Get Directions">
       Get Directions
     </md-button>
-    <md-button ng-if="event.eventUrl" class="dialog-class" ng-click="navigateTo(event.eventUrl)" aria-label="View Event">
+    <md-button ng-if="event.eventUrl" class="dialog-class md-raised md-primary" ng-click="navigateTo(event.eventUrl)" aria-label="View Event">
       View Event
     </md-button>
   </md-dialog-actions>

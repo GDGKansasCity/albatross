@@ -2,25 +2,22 @@
   <md-toolbar flex>
     <h2 class="md-toolbar-tools">Upcoming</h2>
   </md-toolbar>
-  <md-card-content class="md-padding" layout="row">
-    <div ng-show="vm.loading">
+  <md-card-content layout="row" style="padding: 0;">
+    <div ng-show="vm.future_loading" style="padding: 20px">
       <md-progress-circular md-mode="indeterminate"></md-progress-circular>
     </div>
     <div flex layout="column">
-      <md-list ng-show="vm.events.future.length">
-        <md-list-item ng-repeat="event in vm.events.future" ng-click="vm.viewEvent(event, $event)" class="md-3-line" md-whiteframe="1" layout-padding>
-          <img src="https://developers.google.com/_static/images/gdg-icon.png" alt="GDG Boomerang" class="md-avatar" />
+      <md-list ng-show="vm.events.future.length" flex style="padding: 0;">
+        <md-list-item ng-repeat="event in vm.events.future" ng-click="vm.viewEvent($event, event)" class="md-2-line">
+          <img src="https://developers.google.com/_static/images/gdg-icon.png" alt="GDG Boomerang" title="GDG Boomerang" class="md-avatar" />
           <div class="md-list-item-text">
             <h3>{{ event.title }}</h3>
             <p>{{ event.start | date:'EEEE, MMMM d, y - h:mm a' }}</p>
-            <p>
-              <span class="content-desc" ng-repeat="tag in event.tags">
-                <span ng-if="!first">&nbsp;</span>#{{ tag }}&nbsp;
-              </span>
-            </p>
           </div>
+          <md-divider ng-if="!$last"></md-divider>
         </md-list-item>
       </md-list>
+      <h4 ng-if="!vm.events.future.length && !vm.future_loading" style="padding: 8px">Stay tuned, another meetup will be scheduled soon!</h4>
       <h4 ng-if="vm.upcomingError" ng-bind-html="vm.upcomingError" style="margin: 8px"></h4>
     </div>
   </md-card-content>
@@ -30,25 +27,22 @@
   <md-toolbar flex>
     <h2 class="md-toolbar-tools">Recent Meetups</h2>
   </md-toolbar>
-  <md-card-content class="md-padding" layout="row">
-    <div ng-show="vm.loading">
+  <md-card-content layout="row" style="padding: 0;">
+    <div ng-show="vm.past_loading" style="padding: 20px">
       <md-progress-circular md-mode="indeterminate"></md-progress-circular>
     </div>
     <div flex layout="column">
-      <md-list ng-show="vm.events.past.length">
-        <md-list-item ng-repeat="event in vm.events.past" ng-click="vm.viewEvent(event, $event)" class="md-3-line" md-whiteframe="1" layout-padding>
-          <img src="https://developers.google.com/_static/images/gdg-icon.png" alt="GDG Boomerang" class="md-avatar" />
+      <md-list ng-show="vm.events.past.length" style="padding: 0;">
+        <md-list-item ng-repeat="event in vm.events.past | limitTo: 12" ng-click="vm.viewEvent($event, event)" class="md-2-line">
+          <img src="https://developers.google.com/_static/images/gdg-icon.png" alt="GDG Boomerang" title="GDG Boomerang" class="md-avatar" />
           <div class="md-list-item-text">
             <h3>{{ event.title }}</h3>
             <p>{{ event.start | date:'EEEE, MMMM d, y - h:mm a' }}</p>
-            <p>
-              <span class="content-desc" ng-repeat="tag in event.tags">
-                <span ng-if="!first">&nbsp;</span>#{{ tag }}&nbsp;
-              </span>
-            </p>
           </div>
+          <md-divider ng-if="!$last"></md-divider>
         </md-list-item>
       </md-list>
+      <h4 ng-if="!vm.events.past.length && !vm.past_loading" style="padding: 8px">No past meetups were found.</h4>
       <h4 ng-if="vm.upcomingError" ng-bind-html="vm.pastError" style="margin: 8px"></h4>
     </div>
   </md-card-content>
