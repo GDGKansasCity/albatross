@@ -29,6 +29,8 @@ It is themed for use by GDG Kansas City. Originally designed by [Kyle Paul](http
  8. Fill in the fields on the `Config`, `Social`, and `Admins` tabs
      * Make sure to enter your Gmail address on the `Admins` tab!
  9. Open the **app.js** file and set the `SITE_SETUP` variable back to `false`
+ 10. Update the MailChimp module to use the custom URL for your GDG's mailing list:
+     * `line 170` in the **index.html** file
 
 ## How to use 
 
@@ -43,3 +45,9 @@ Run `grunt build` for building.
 #### Deploy
 
 Run `firebase deploy` for deploying to Firebase Hosting.
+
+### TODOs:
+
+* Make the MailChimp module dynamic
+* Allow events to be saved to client's calendar
+* Create Gallery module/page
