@@ -24,13 +24,17 @@ It is themed for use by GDG Kansas City. Originally designed by [Kyle Paul](http
  ```
  
  5. Open the **app.js** file and set the `SITE_SETUP` variable to `true`
- 6. Run `grunt serve` in a terminal
- 7. When the `localhost` window opens, navigate to: http://localhost:9000/admin
+ 6. Open a terminal window and run `grunt serve`
+ 7. When the `localhost` window opens in your browser, navigate to: http://localhost:9000/admin
  8. Fill in the fields on the `Config`, `Social`, and `Admins` tabs
-     * Make sure to enter your Gmail address on the `Admins` tab!
+     * Make sure to enter your Gmail address when on the `Admins` tab!
  9. Open the **app.js** file and set the `SITE_SETUP` variable back to `false`
  10. Update the MailChimp module to use the custom URL for your GDG's mailing list:
      * `line 170` in the **index.html** file
+ 11. Update the Google Analytics ID to your GDG's property ID
+     * `line 319` in the **index.html** file
+ 12. Create an account with [Sentry.io](https://sentry.io) and update the config Url
+     * `line 360` in the **index.html** file
 
 ## How to use 
 
