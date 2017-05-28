@@ -12,6 +12,7 @@ angular.module('albatrossApp')
     var vm = this;
 
     vm.loading = true;
+    vm.copy_year = new Date().getFullYear();
     vm.config = new Config();
 
     vm.config.$loaded().then(function (config) {
