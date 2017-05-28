@@ -81,7 +81,7 @@ body {
 .content-desc a:visited,
 .content-desc a:focus,
 .content-desc a:active {
-  color: #2196F3;
+  color: #1E88E5;
   text-decoration: none;
 
   /* These are technically the same, but use both */

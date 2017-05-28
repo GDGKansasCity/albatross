@@ -5,7 +5,7 @@
   <md-card ng-repeat="post in vm.news" ng-hide="vm.loading">
     <md-card-header>
       <md-card-avatar>
-        <img ng-src="{{ post.item.actor.image.url }}" alt="GDG" title="GDG" />
+        <img ng-src="{{ post.item.actor.image.url }}" alt="GDG Boomerang" title="GDG Boomerang" />
       </md-card-avatar>
       <md-card-header-text>
         <span class="md-title">{{ post.item.actor.displayName }}</span>
@@ -27,9 +27,6 @@
       <span layout="row" flex>
         <md-button hide-xs ng-disabled="true">{{ post.comments }} Comment<span ng-show="post.comments != 1">s</span></md-button>
         <md-button hide-xs ng-disabled="true">{{ post.reshares }} share<span ng-show="post.reshares != 1">s</span></md-button>
-        <div style="padding: 8px 12px 0;">
-          <div class="g-plusone" data-size="medium" data-annotation="bubble" data-href="{{ post.via.url }}"></div>
-        </div>
       </span>
       <md-button ng-href="{{ post.via.url }}" target="_blank" class="md-accent">Read&nbsp;More&nbsp;&#187;</md-button>
     </md-card-actions>
