@@ -8,7 +8,7 @@
  * Service in the albatrossApp.
  */
 angular.module('albatrossApp')
-  .service('User', function ($location, $firebaseAuth, Admins) {
+  .service('User', function ($location, $firebaseAuth, Admins, SITE_SETUP) {
     var self = this,
         auth = $firebaseAuth(),
         admins = new Admins();
@@ -22,7 +22,8 @@ angular.module('albatrossApp')
               allowedUser = true;
             }
           }
-          if (!allowedUser) {
+          if (!allowedUser && !SITE_SETUP) {
+            console.log('Auth failed, user not allowed.');
             self.logout();
           }
         });

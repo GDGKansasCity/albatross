@@ -19,6 +19,7 @@ angular
     'ngMaterial',
     'firebase'
   ])
+  .constant('SITE_SETUP', false)
   .config(function ($sceDelegateProvider) {
     $sceDelegateProvider.resourceUrlWhitelist([
       // Allow same origin resource loads.
