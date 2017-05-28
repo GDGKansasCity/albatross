@@ -36,17 +36,9 @@ angular
   .config(function ($mdThemingProvider) {
     // MD Theme
     $mdThemingProvider.theme('default')
-      .primaryPalette('blue-grey', {
-        'hue-1': '50',
-        'hue-2': '100',
-        'hue-3': '800'
-      })
+      .primaryPalette('blue-grey')
       .accentPalette('blue')
-      .backgroundPalette('grey', {
-        'hue-1': '50',
-        'hue-2': '100',
-        'hue-3': '800'
-      });
+      .backgroundPalette('grey');
   })
   .config(function ($routeProvider, $locationProvider) {
     // HTML5 Routes
