@@ -42,10 +42,10 @@
 
   <!-- Add your site or application content here -->
   <div layout="column" layout-fill>
-    <md-toolbar class="md-hue-1" md-whiteframe="4">
+    <md-toolbar md-whiteframe="4">
       <div class="md-toolbar-tools">
         <div layout="row" ng-click="main.navigateTo('/')" style="outline: none;cursor: pointer;">
-          <img src="images/gdg_icon.png" style="width: 35px; height: 38px;" alt="GDG Logo" title="GDG Logo" />
+          <img src="images/gdg_icon.png" style="width: 35px; height: 38px;" alt="GDG Boomerang" title="GDG Boomerang" />
           <h2 style="margin: auto; top: 0; bottom: 0; left: 0; right: 0;">{{ main.config.chapterName }}</h2>
         </div>
         <span flex></span>
@@ -117,7 +117,7 @@
     </md-toolbar>
 
     <!-- MAIN -->
-    <md-content id="main-content" class="md-hue-2" flex>
+    <md-content id="main-content" flex>
       <!-- HERO -->
       <div hide-xs ng-controller="CoverCtrl as hero" ng-if="hero.showHero()">
         <md-toolbar class="md-hue-1 hero-image" ng-style="{'background-image': 'url(' + hero.cover.image + ')'}" md-whiteframe="4">
