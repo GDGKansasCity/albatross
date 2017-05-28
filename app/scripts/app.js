@@ -20,15 +20,16 @@ angular
     'firebase'
   ])
   .config(function () {
-    // Firebase Config
-    firebase.initializeApp({
-      "apiKey": "AIzaSyBRFFP_iZ3l82cD9ChchMlkz7fMMCa_XW8",
-      "databaseURL": "https://gdg-kc.firebaseio.com",
-      "storageBucket": "gdg-kc.appspot.com",
-      "authDomain": "gdg-kc.firebaseapp.com",
-      "messagingSenderId": "963693671257",
-      "projectId": "gdg-kc"
-    });
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyBRFFP_iZ3l82cD9ChchMlkz7fMMCa_XW8",
+      authDomain: "gdg-kc.firebaseapp.com",
+      databaseURL: "https://gdg-kc.firebaseio.com",
+      projectId: "gdg-kc",
+      storageBucket: "gdg-kc.appspot.com",
+      messagingSenderId: "963693671257"
+    };
+    firebase.initializeApp(config);
   })
   .config(function ($sceDelegateProvider) {
     $sceDelegateProvider.resourceUrlWhitelist([
