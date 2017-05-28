@@ -8,6 +8,8 @@
 // 'test/spec/**/*.js'
 
 var modRewrite = require('connect-modrewrite');
+var path = require('path');
+var swPrecache = require('sw-precache');
 
 module.exports = function (grunt) {
 
@@ -177,7 +179,7 @@ module.exports = function (grunt) {
     postcss: {
       options: {
         processors: [
-          require('autoprefixer-core')({browsers: ['last 1 version']})
+          require('autoprefixer-core')({ browsers: ['last 1 version'] })
         ]
       },
       server: {
@@ -205,25 +207,25 @@ module.exports = function (grunt) {
     wiredep: {
       app: {
         src: ['<%= yeoman.app %>/index.html'],
-        ignorePath:  /\.\.\//
+        ignorePath: /\.\.\//
       },
       test: {
         devDependencies: true,
         src: '<%= karma.unit.configFile %>',
-        ignorePath:  /\.\.\//,
-        fileTypes:{
+        ignorePath: /\.\.\//,
+        fileTypes: {
           js: {
             block: /(([\s\t]*)\/{2}\s*?bower:\s*?(\S*))(\n|\r|.)*?(\/{2}\s*endbower)/gi,
-              detect: {
-                js: /'(.*\.js)'/gi
-              },
-              replace: {
-                js: '\'{{filePath}}\','
-              }
+            detect: {
+              js: /'(.*\.js)'/gi
+            },
+            replace: {
+              js: '\'{{filePath}}\','
             }
           }
+        }
       }
-    }, 
+    },
 
     // Renames files for browser caching purposes
     filerev: {
@@ -388,7 +390,6 @@ module.exports = function (grunt) {
             '*.{ico,png,txt}',
             '*.html',
             'manifest.json',
-            'service-worker.js',
             'sitemap.xml',
             'icons/*.*',
             'images/{,*/}*.{webp}',
@@ -440,6 +441,39 @@ module.exports = function (grunt) {
   });
 
 
+  function writeServiceWorkerFile(rootDir, handleFetch, callback) {
+    var config = {
+      cacheId: 'gdg-albatross',
+      handleFetch: handleFetch,
+      logger: grunt.log.writeln,
+      staticFileGlobs: [
+        rootDir + '/styles/**.css',
+        rootDir + '/**.html',
+        rootDir + '/images/**.*',
+        rootDir + '/scripts/**.js'
+      ],
+      stripPrefix: rootDir + '/',
+      verbose: true
+    };
+
+    swPrecache.write(path.join(rootDir, 'service-worker.js'), config, callback);
+  }
+
+  grunt.registerTask('swPrecache', function () {
+    /* eslint-disable no-invalid-this */
+    var done = this.async();
+    var rootDir = appConfig.dist;
+    var handleFetch = true;
+    /* eslint-enable */
+
+    writeServiceWorkerFile(rootDir, handleFetch, function (error) {
+      if (error) {
+        grunt.fail.warn(error);
+      }
+      done();
+    });
+  });
+
   grunt.registerTask('serve', 'Compile then start a connect web server', function (target) {
     if (target === 'dist') {
       return grunt.task.run(['build', 'connect:dist:keepalive']);
@@ -484,7 +518,8 @@ module.exports = function (grunt) {
     'uglify',
     'filerev',
     'usemin',
-    'htmlmin'
+    'htmlmin',
+    'swPrecache'
   ]);
 
   grunt.registerTask('default', [
