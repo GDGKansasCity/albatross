@@ -32,9 +32,9 @@ It is themed for use by GDG Kansas City. Originally designed by [Kyle Paul](http
  10. Update the MailChimp module to use the custom URL for your GDG's mailing list:
      * `line 170` in the **index.html** file
  11. Update the Google Analytics ID to your GDG's property ID
-     * `line 319` in the **index.html** file
+     * `line 319` in the **index.html** file
  12. Create an account with [Sentry.io](https://sentry.io) and update the config Url
-     * `line 360` in the **index.html** file
+     * `line 360` in the **index.html** file
 
 ## How to use 
 
