@@ -98,8 +98,37 @@ body {
   hyphens: auto;
 }
 
+.content-button {
+  background-image: initial;
+  background-position-x: initial;
+  background-position-y: initial;
+  background-size: initial;
+  background-repeat-x: initial;
+  background-repeat-y: initial;
+  background-attachment: initial;
+  background-origin: initial;
+  background-clip: initial;
+  background-color: rgb(238, 238, 238);
+  transition-duration: 0.3s;
+  transition-timing-function: initial;
+  transition-delay: initial;
+  border: 0;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  cursor: pointer;
+  display: inline-block;
+  min-height: 28px;
+  outline: none;
+  overflow: hidden;
+  position: relative;
+  text-align: center;
+  -webkit-tap-highlight-color: transparent;
+  min-width: 28px;
+  z-index: 0;
+}
+
 .organizer-grid {
-  padding: 25px 35px;
+  padding: 20px 30px;
   float: left;
 }
 
