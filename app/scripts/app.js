@@ -47,10 +47,15 @@ angular
 
     // App Routes
     $routeProvider
+      // .when('/', {
+      //   templateUrl: 'views/main.html',
+      //   controller: 'MainCtrl',
+      //   controllerAs: 'main'
+      // })
       .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl',
-        controllerAs: 'main'
+        templateUrl: 'views/events.html',
+        controller: 'EventsCtrl',
+        controllerAs: 'vm'
       })
       .when('/admin', {
         templateUrl: 'views/admin.html',

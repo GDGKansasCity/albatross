@@ -8,34 +8,35 @@
  * Controller of the albatrossApp
  */
 angular.module('albatrossApp')
-  .controller('OrganizersCtrl', function ($scope, $window, $location, $http, $timeout, Config) {
+  .controller('OrganizersCtrl', function ($scope, $window, $location, $http, $timeout, Config, Social) {
     var vm = this;
 
-    vm.config = new Config();
     vm.loading = true;
-
+    vm.organizers = [];
+    vm.config = new Config();
     vm.config.$loaded().then(function (config) {
-      var url = 'https://www.googleapis.com/plus/v1/people/' + config.googleID + '?key=' + config.googleKey;
-      $http.jsonp(url + '&fields=urls', {jsonpCallbackParam: 'callback'}).then(function (results) {
-          var data = results.data, orgs = [], i = 0;
-          for (i = 0; i < data.urls.length; i++) {
-            var url = data.urls[i];
-            if (url.label.substring(0, 9) === 'Organizer') {
-              var org = {
-                link: url.value
-              };
-              orgs.push(org);
-            }
-          }
-          vm.organizers = orgs;
-          vm.loading = false;
-          $timeout(function () {
-            gapi.person.go();
-          });
-        }, function () {
-          vm.error = 'Sorry, we failed to retrieve the Organizers from the Google+ API.';
-          vm.loading = false;
-        });
+      vm.meetupKey = config.meetupKey;
+    });
+
+    vm.social = new Social();
+    vm.social.$loaded().then(function (social) {
+      var meetup_url = 'https://api.meetup.com/' + social.meetup + '/members?key=' + vm.meetupKey +
+        '&photo-host=secure&role=leads' +
+        '&sig_id=12889940&sig=ece277cfc4be272311affb8a8ef00f812181d88a';
+      var jsonp_config = {
+        'headers': { 'Accept': 'application/json;' },
+        'timeout': 10000,
+        'jsonpCallbackParam': 'callback'
+      };
+
+      // fetch meetup details
+      $http.jsonp(meetup_url, jsonp_config).then(function (results) {
+        vm.organizers = results.data.data;
+        vm.loading = false;
+      }, function () {
+        vm.upcomingError = 'Sorry, we failed to retrieve the Organizers from the Meetup.com API.';
+        vm.loading = false;
+      });
     });
 
     $scope.$on('$viewContentLoaded', function () {

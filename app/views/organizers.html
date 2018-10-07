@@ -6,15 +6,16 @@
     <div ng-show="vm.loading">
       <md-progress-circular md-mode="indeterminate"></md-progress-circular>
     </div>
-    <div ng-hide="vm.loading" ng-repeat="person in vm.organizers">
-      <div class="organizer-grid">
-        <div class="g-person"
-            data-width="180"
-            data-href="{{ person.link }}"
-            data-showtagline="false"
-            data-showcoverphoto="false"
-            data-rel="author"></div>
-      </div>
+    <div ng-hide="vm.loading" ng-repeat="person in vm.organizers | orderBy: 'name'">
+      <md-list class="md-dense" flex>
+        <md-list-item class="md-2-line">
+          <img ng-src="{{ person.photo.thumb_link }}" class="md-avatar" alt="{{ person.name }}" />
+          <div class="md-list-item-text">
+            <h3>{{ person.name }}</h3>
+            <p>{{ person.group_profile.role }}</p>
+          </div>
+        </md-list-item>
+      </md-list>
     </div>
     <div ng-hide="vm.loading" ng-if="vm.error">
       <span ng-bind="vm.error"></span>

@@ -8,22 +8,35 @@
  * Controller of the albatrossApp
  */
 angular.module('albatrossApp')
-  .controller('AboutCtrl', function ($scope, $window, $location, $http, $sce, Config) {
+  .controller('AboutCtrl', function ($scope, $window, $location, $http, $sce, Config, Social) {
     var vm = this;
 
     vm.loading = true;
     vm.copy_year = new Date().getFullYear();
     vm.config = new Config();
-
     vm.config.$loaded().then(function (config) {
-      var url = 'https://www.googleapis.com/plus/v1/people/' + config.googleID + '?key=' + config.googleKey;
-      $http.jsonp(url + '&fields=aboutMe', {jsonpCallbackParam: 'callback'}).then(function (results) {
-        var data = results.data;
-        vm.desc = data.aboutMe;
+      vm.meetupKey = config.meetupKey;
+    });
+
+    vm.social = new Social();
+    vm.social.$loaded().then(function (social) {
+      var meetup_url = 'https://api.meetup.com/' + social.meetup + '?key=' + vm.meetupKey +
+        '&photo-host=secure' +
+        '&sig_id=12889940&sig=ece277cfc4be272311affb8a8ef00f812181d88a';
+      var jsonp_config = {
+        'headers': { 'Accept': 'application/json;' },
+        'timeout': 10000,
+        'jsonpCallbackParam': 'callback'
+      };
+
+      // fetch meetup details
+      $http.jsonp(meetup_url, jsonp_config).then(function (results) {
+        var data = results.data.data;
+        vm.desc = data.description;
         $sce.trustAsHtml(vm.desc);
         vm.loading = false;
       }, function () {
-        vm.desc = 'Sorry, we failed to retrieve the About text from the Google+ API.';
+        vm.upcomingError = 'Sorry, we failed to retrieve the Description from the Meetup.com API.';
         vm.loading = false;
       });
     });
